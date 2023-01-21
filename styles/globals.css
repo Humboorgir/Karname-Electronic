@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html,
+body {
+  font-family: "Vazirmatn";
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../public/fonts/Vazirmatn-Regular.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
