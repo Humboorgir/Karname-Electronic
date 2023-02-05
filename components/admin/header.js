@@ -7,7 +7,7 @@ const Header = () => {
           <li>
             <Link
               className="bg-red-500 rounded-[20px] px-4 py-3 text-white"
-              href="/login/admin"
+              href="/admin"
             >
               پنل ادمین
             </Link>
@@ -15,11 +15,10 @@ const Header = () => {
           <div className="flex gap-5">
             <li>
               <Link
-                href="/login/student"
-                // border-[1px] border-black
+                href="/"
                 className="bg-blue text-white rounded-[20px] px-4 py-3"
               >
-                ورود دانش آموز
+                بازگشت به خانه
               </Link>
             </li>
             <li>

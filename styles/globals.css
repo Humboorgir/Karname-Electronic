@@ -1,18 +1,66 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html,
-body {
-  font-family: "Vazirmatn";
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-color: rgb(249, 249, 249);
-}
 @font-face {
   font-family: "Vazirmatn";
   src: url("../public/fonts/Vazirmatn-Regular.ttf");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
+}
+html,
+body {
+  font-family: "Vazirmatn";
+  position: relative;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+@font-face {
+  font-family: "Vazirmatn-bold";
+  src: url("../public/fonts/Vazirmatn-Bold.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+.bold {
+  font-family: "Vazirmatn-bold" !important;
+}
+@font-face {
+  font-family: "Vazirmatn-light";
+  src: url("../public/fonts/Vazirmatn-ExtraLight.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+.light {
+  font-family: "Vazirmatn-light";
+}
+.inputAnimationField i::before {
+  z-index: 10;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  border-radius: 5px;
+  background-color: rgb(108, 108, 108);
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+.inputAnimationField input:focus ~ i::before {
+  z-index: 10;
+  transform-origin: left;
+  transform: scaleX(1) scaleY(1.01);
+}
+.clickAnimation:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+.clickAnimation:active {
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
 }
