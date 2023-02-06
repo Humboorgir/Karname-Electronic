@@ -1,6 +1,6 @@
 import Head from "@/components/head";
-import Header from "@/components/StudentLogin/header";
-import Form from "@/components/StudentLogin/form";
+import Header from "@/components/Login/student/header";
+import Form from "@/components/Login/student/form";
 import Footer from "@/components/footer";
 const Student = () => {
   return (

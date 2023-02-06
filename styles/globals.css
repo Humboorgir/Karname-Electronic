@@ -55,6 +55,7 @@ body {
   z-index: 10;
   transform-origin: left;
   transform: scaleX(1) scaleY(1.01);
+  transition: transform 0.3s ease-in-out;
 }
 .clickAnimation:hover {
   transform: scale(1.05);
@@ -63,4 +64,34 @@ body {
 .clickAnimation:active {
   transform: scale(0.95);
   transition: transform 0.3s ease;
+}
+.popIn {
+  animation-name: popIn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+.shake {
+  animation: shake 0.2s;
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(6px);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(-130px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -3,13 +3,26 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import { signIn } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-const Form = () => {
+const Form = ({ setError }) => {
   const router = useRouter();
-  // const [error, setError] = useState("");
-  if (router.query.error) {
-    console.log(router.query.error);
-    alert(router.query.error);
-  }
+  useEffect(() => {
+    if (router.query.error) {
+      document.getElementById("form").classList.add("shake");
+      setTimeout(() => {
+        document.getElementById("form").classList.remove("shake");
+      }, 500);
+      setError({
+        display: true,
+        title: "خطا!",
+        text: router.query.error,
+      });
+      setTimeout(() => {
+        setError({
+          display: false,
+        });
+      }, 4000);
+    }
+  }, [router]);
   async function handleSubmit(e) {
     e.preventDefault();
     let username = document.getElementById("username").value;
@@ -20,10 +33,8 @@ const Form = () => {
       redirect: false,
     }).then(({ ok, error }) => {
       if (ok) {
-        console.log("user found");
         router.push("/dashboard/admin");
       } else {
-        console.log(error);
         router.push(`/login/admin?error=${error}`);
       }
     });
@@ -31,6 +42,7 @@ const Form = () => {
   return (
     <div className="pt-[5vh] h-[60vh] flex flex-col justify-start items-center w-full">
       <form
+        id="form"
         action="/api/auth"
         method="POST"
         className="flex flex-col gap-8 border-[1px] border-gray-400 rounded-lg p-10

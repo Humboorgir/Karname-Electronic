@@ -27,15 +27,19 @@ export const authOptions = {
             admin.password === credentials.password
         );
         if (user) {
-          console.log("user found!");
           return user;
         } else {
-          console.log("User not found!");
-          throw new Error("User not found");
+          throw new Error("کاربر پیدا نشد");
         }
       },
     }),
   ],
+  callbacks: {
+    async session({ session }) {
+      session.user.role = "admin";
+      return session;
+    },
+  },
 };
 
 export default NextAuth(authOptions);
