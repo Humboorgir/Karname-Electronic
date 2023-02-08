@@ -73,7 +73,9 @@ body {
 .shake {
   animation: shake 0.2s;
 }
-
+.userHoverAnimation:hover {
+  animation: userHoverAnimation 0.5s ease forwards;
+}
 @keyframes shake {
   25% {
     transform: translateX(6px);
@@ -93,5 +95,13 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes userHoverAnimation {
+  from {
+    background-color: none;
+  }
+  to {
+    background-color: rgba(197, 197, 197, 0.302);
   }
 }

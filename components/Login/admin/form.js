@@ -7,9 +7,9 @@ const Form = ({ setError }) => {
   const router = useRouter();
   useEffect(() => {
     if (router.query.error) {
-      document.getElementById("form").classList.add("shake");
+      document.querySelector("body").classList.add("shake");
       setTimeout(() => {
-        document.getElementById("form").classList.remove("shake");
+        document.querySelector("body").classList.remove("shake");
       }, 500);
       setError({
         display: true,

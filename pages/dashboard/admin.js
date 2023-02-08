@@ -1,6 +1,7 @@
 import Head from "@/components/head";
 import Header from "@/components/Panel/admin/header";
-import Panel from "@/components/Panel/admin/admin";
+import Panel from "@/components/Panel/admin/panel";
+import Footer from "@/components/footer";
 import { useSession, getSession, signOut } from "next-auth/react";
 const admin = () => {
   const { data: session, status } = useSession();
@@ -25,8 +26,10 @@ const admin = () => {
     );
   return (
     <>
-      <Head page="پنل ادمین" />
+      <Head page="درگاه مدیریت" />
       <Header />
+      <Panel />
+      <Footer />
     </>
   );
 };

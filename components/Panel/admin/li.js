@@ -1,8 +1,8 @@
 const Li = ({ children }) => {
   return (
     <li
-      className="flex flex-row items-center justify-center gap-2 text-white bg-slate-700
-     h-[90px] w-[130px] rounded-md"
+      className="flex flex-row items-center justify-center gap-2
+     h-[55px] w-[130px] hover:border-b-[2px] hover:border-b-neutral-800"
     >
       {children}
     </li>
