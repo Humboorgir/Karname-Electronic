@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
 const teacherSchema = new mongoose.Schema({
+  name: reqString,
+  lastName: reqString,
   username: reqString,
   password: reqString,
 });

@@ -17,15 +17,15 @@ const Header = () => {
             کارنامه
           </div>
           <div className="flex flex-row justify-center items-center basis-2/4">
-            <Li>
+            <Li href="/">
               خانه
               <FaHome className="mb-[2px]" />
             </Li>
-            <Li>
+            <Li href="/support">
               پشتیبانی
               <FaPhone className="mb-[0px] rotate-[-15deg]" />
             </Li>
-            <Li>
+            <Li href="/guide">
               راهنما
               <FaInfoCircle className="mb-[2px]" />
             </Li>

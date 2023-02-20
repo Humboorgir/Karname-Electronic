@@ -1,10 +1,13 @@
-const Li = ({ children }) => {
+const Li = ({ children, href }) => {
   return (
-    <li
-      className="flex flex-row items-center justify-center gap-2
-     h-[55px] w-[130px] hover:border-b-[2px] hover:border-b-neutral-800"
-    >
-      {children}
+    <li>
+      <a
+        className="flex flex-row items-center justify-center gap-2 cursor-pointer
+     h-[90px] w-[130px] tabHoverAnimation"
+        href={href}
+      >
+        {children}
+      </a>
     </li>
   );
 };

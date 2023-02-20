@@ -33,7 +33,7 @@ const Form = ({ setError }) => {
       redirect: false,
     }).then(({ ok, error }) => {
       if (ok) {
-        router.push("/dashboard/admin");
+        router.push("/panel/admin");
       } else {
         router.push(`/login/admin?error=${error}`);
       }
