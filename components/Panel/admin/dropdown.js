@@ -1,10 +1,10 @@
 import { FaSignOutAlt, FaCog } from "react-icons/fa";
 const dropdownMenu = () => {
   return (
-    <div className="absolute w-[200px] h-max shadow-xl rounded-b-2xl top-[90px] bg-white">
+    <div className="absolute w-[230px] h-max shadow-xl rounded-b-2xl top-[90px] bg-white z-10">
       <ul className="flex flex-col">
         <li className="h-[50px] flex flex-row items-center justify-end px-10 gap-2 hover:bg-neutral-100">
-          تنظیمات
+          تغییر رمز عبور
           <FaCog className="mb-[2px]" />
         </li>
         <i className="border-b-2 border-neutral-200" />

@@ -1,15 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer components {
-  .hoverCircleAnimation {
-    @apply relative before:scale-0 before:content-[''] before:bg-neutral-200
-    before:h-8 before:w-8 before:absolute
-    before:top-[-50%] before:left-[-50%] before:rounded-full
-    hover:before:scale-100 hover:before:transition-transform
-    hover:before:duration-200;
-  }
-}
 @font-face {
   font-family: "Vazirmatn";
   src: url("../public/fonts/Vazirmatn-Regular.ttf");
@@ -80,7 +71,7 @@ body {
   animation-timing-function: ease-in-out;
 }
 .shake {
-  animation: shake 0.2s;
+  animation: shake 0.3s;
 }
 .tabHoverAnimation {
   background-color: none;
@@ -89,6 +80,9 @@ body {
 .tabHoverAnimation:hover {
   background-color: rgba(197, 197, 197, 0.246);
   transition: background-color 0.3s ease;
+}
+.dropdownAnimation {
+  animation: dropdownAnimation 0.3s;
 }
 @keyframes shake {
   25% {
@@ -109,5 +103,17 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes dropdownAnimation {
+  from {
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: top;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: top;
   }
 }

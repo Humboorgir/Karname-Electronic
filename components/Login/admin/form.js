@@ -40,7 +40,7 @@ const Form = ({ setError }) => {
     });
   }
   return (
-    <div className="pt-[5vh] h-[60vh] flex flex-col justify-start items-center w-full">
+    <div className="flex flex-col justify-start items-center w-full">
       <form
         id="form"
         action="/api/auth"

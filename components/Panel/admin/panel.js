@@ -1,6 +1,6 @@
 const Panel = () => {
   return (
-    <div className="flex flex-row gap-5 justify-center items-center h-[65vh]">
+    <div className="m-10 flex flex-row flex-wrap gap-5 justify-center items-center">
       <a
         href="/panel/admin/students"
         className="flex flex-col items-center justify-center gap-3 bg-blue text-white

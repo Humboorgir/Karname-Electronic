@@ -12,7 +12,7 @@ const Admin = () => {
     text: null,
   });
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-[100svh] justify-between gap-5">
       <Head page="ورود نماینده" />
       <Header />
       {error.display && <Error error={error} setError={setError} />}
