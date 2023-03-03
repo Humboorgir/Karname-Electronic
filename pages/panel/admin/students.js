@@ -1,6 +1,7 @@
 import Head from "@/components/head";
 import Header from "@/components/Panel/admin/header";
 import StudentsPanel from "@/components/Panel/admin/studentspanel";
+import mongoConnect from "@/utils/mongoconnect";
 import Footer from "@/components/footer";
 const Students = ({ Students }) => {
   return (
@@ -13,6 +14,7 @@ const Students = ({ Students }) => {
   );
 };
 export async function getServerSideProps() {
+  await mongoConnect();
   let students = await fetch(`${process.env.NEXTAUTH_URL}/api/students`, {
     method: "POST",
   });
