@@ -13,7 +13,7 @@ const Students = ({ Students }) => {
   );
 };
 export async function getServerSideProps() {
-  let students = await fetch("/api/students", {
+  let students = await fetch(`${process.env.NEXTAUTH_URL}/api/students`, {
     method: "POST",
   });
   let Students = await students.json();
