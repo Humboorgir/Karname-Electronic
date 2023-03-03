@@ -1,7 +1,8 @@
+import Link from "next/link";
 const Panel = () => {
   return (
     <div className="m-10 flex flex-row flex-wrap gap-5 justify-center items-center">
-      <a
+      <Link
         href="/panel/admin/students"
         className="flex flex-col items-center justify-center gap-3 bg-blue text-white
       h-[300px] w-[300px] rounded-lg shadow-2xl cursor-pointer scale-100 transition-transform ease-in-out
@@ -10,8 +11,8 @@ const Panel = () => {
       >
         <img className="h-[200px]" src="/student.svg" />
         <span className="text-[23px]">مدیریت دانش آموزان</span>
-      </a>
-      <a
+      </Link>
+      <Link
         href="/panel/admin/teachers"
         className="flex flex-col items-center justify-center gap-3 bg-blue text-white
       h-[300px] w-[300px] rounded-lg shadow-2xl cursor-pointer scale-100 transition-transform ease-in-out
@@ -20,8 +21,8 @@ const Panel = () => {
       >
         <img className="h-[200px]" src="/teacher.svg" />
         <span className="text-[23px]">مدیریت معلمان </span>
-      </a>
-      <a
+      </Link>
+      <Link
         href="/panel/admin/managers"
         className="flex flex-col items-center justify-center gap-3 bg-blue text-white
       h-[300px] w-[300px] rounded-lg shadow-2xl cursor-pointer scale-100 transition-transform ease-in-out
@@ -30,7 +31,7 @@ const Panel = () => {
       >
         <img className="h-[200px]" src="/manager.svg" />
         <span className="text-[23px]">مدیریت نمایندگان </span>
-      </a>
+      </Link>
     </div>
   );
 };

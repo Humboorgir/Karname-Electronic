@@ -13,16 +13,16 @@ const TextField = ({ id, label }) => (
     ></input>
   </div>
 );
-const EditStudent = ({ handleClose, setStudents }) => {
+const EditStudent = ({ handleClose, students, setStudents, editStudent }) => {
   async function handleSubmit(e) {
     e.preventDefault();
     let data = {
+      oldName: editStudent.name,
       name: e.target.name.value,
       username: e.target.username.value,
-      pfp: Math.floor(Math.random() * 5 + 1),
     };
     const JSONdata = JSON.stringify(data);
-    const response = await fetch("/api/register", {
+    const response = await fetch("/api/editstudent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,14 +38,12 @@ const EditStudent = ({ handleClose, setStudents }) => {
       return;
     }
     handleClose();
-    setStudents((students) => [
-      ...students,
-      {
-        name: data.name,
-        username: data.username,
-        pfp: data.pfp,
-      },
-    ]);
+    let newStudents = students.slice();
+    let theStudent = newStudents.find((x) => x.name == editStudent.name);
+    let index = newStudents.indexOf(theStudent);
+    newStudents[index].name = e.target.name.value;
+    console.table(newStudents);
+    setStudents(newStudents);
   }
   return (
     <Backdrop handleClose={handleClose}>

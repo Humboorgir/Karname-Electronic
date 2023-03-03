@@ -32,7 +32,7 @@ const RemoveStudent = ({ handleClose, setStudents, removeStudent }) => {
             آیا از حذف دانش آموز مطمئن هستید؟
           </h1>
           <p className="pr-2 text-right">
-            با حذف این دانش آموز همه اطلاعات ایشان برای همیشه حذف خواهد شد
+            با حذف این دانش آموز همه اطلاعات او برای همیشه حذف خواهد شد
           </p>
         </div>
         <button

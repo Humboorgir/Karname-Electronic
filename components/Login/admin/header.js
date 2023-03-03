@@ -56,7 +56,7 @@ const Header = () => {
               >
                 <Link
                   className="border-b-2 w-full text-center p-4 hover:bg-neutral-100"
-                  href="/login/admin"
+                  href="/"
                 >
                   بازگشت به خانه
                 </Link>

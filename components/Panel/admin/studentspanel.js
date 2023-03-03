@@ -15,7 +15,10 @@ const StudentsPanel = ({ Students }) => {
     open: false,
     name: null,
   });
-  const [openEditStudent, setOpenEditStudent] = useState(false);
+  const [editStudent, setEditStudent] = useState({
+    open: false,
+    name: null,
+  });
   function handleClick(action, name) {
     switch (action) {
       case "addStudent":
@@ -28,14 +31,17 @@ const StudentsPanel = ({ Students }) => {
         });
         break;
       case "editStudent":
-        setOpenEditStudent(true);
+        setEditStudent({
+          open: true,
+          name: name,
+        });
         break;
     }
   }
   function handleClose() {
     if (openAddStudent) setOpenAddStudent(false);
     if (removeStudent.open) setRemoveStudent({ open: false, name: null });
-    if (openEditStudent) setOpenEditStudent(false);
+    if (editStudent.open) setEditStudent({ open: false, name: null });
   }
   return (
     //  the main part of the page
@@ -85,8 +91,13 @@ const StudentsPanel = ({ Students }) => {
           removeStudent={removeStudent}
         />
       )}
-      {openEditStudent && (
-        <EditStudent handleClose={handleClose} setStudents={setStudents} />
+      {editStudent.open && (
+        <EditStudent
+          handleClose={handleClose}
+          students={students}
+          setStudents={setStudents}
+          editStudent={editStudent}
+        />
       )}
     </div>
   );

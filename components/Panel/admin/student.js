@@ -9,7 +9,7 @@ const Student = ({ id, name, pfp, handleClick }) => {
       <span className="mr-auto flex flex-row items-center gap-2">
         <span className="relative">
           <FaEdit
-            onClick={() => handleClick("editStudent")}
+            onClick={() => handleClick("editStudent", name)}
             className="text-gray-800 mb-[2px] cursor-pointer"
           />
         </span>
