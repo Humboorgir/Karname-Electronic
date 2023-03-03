@@ -5,10 +5,13 @@ export default function () {
     return;
   }
   mongoose
-    .connect("mongodb://127.0.0.1/Data", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    .connect(
+      "mongodb+srv://karnameElectronic:k1fV6dbvDBU9sJJ8@karname-electronic.uwr8wdj.mongodb.net/Data",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    )
     .then(() => {
       console.log("Successfully connected to mongodb!");
     });
