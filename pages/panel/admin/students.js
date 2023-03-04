@@ -14,7 +14,6 @@ const Students = ({ Students }) => {
   );
 };
 export async function getServerSideProps() {
-  await mongoConnect();
   let students = await fetch(`${process.env.NEXTAUTH_URL}/api/students`, {
     method: "POST",
   });
