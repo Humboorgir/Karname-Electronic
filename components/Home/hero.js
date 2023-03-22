@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <div className="mb-[3vh] md:mb-[15vh] flex flex-col justify-center items-center text-center">
+    <div className="mb-[3vh] md:mb-[10vh] flex flex-col justify-center items-center text-center">
       <div className="flex flex-row justify-center items-center">
         <span className="text-[11vw] md:text-[80px]">
           کارنامه

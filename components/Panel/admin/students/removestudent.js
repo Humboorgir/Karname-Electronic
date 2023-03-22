@@ -4,7 +4,7 @@ const RemoveStudent = ({ handleClose, setStudents, removeStudent }) => {
   async function handleSubmit(e) {
     console.log(removeStudent.name);
     e.preventDefault();
-    let response = await fetch("/api/deregister", {
+    let response = await fetch("/api/removestudent", {
       method: "POST",
       body: removeStudent.name,
     });

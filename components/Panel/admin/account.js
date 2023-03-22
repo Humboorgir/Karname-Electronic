@@ -16,9 +16,9 @@ const Account = () => {
       cursor-pointer tabHoverAnimation account absolute md:static right-[4%]"
       id="account"
     >
-      <div className="flex flex-col items-end account">
-        <span className="account">ایلیا فضل اللهی</span>
-        <p className="text-red-500 text-[16px] account">نماینده</p>
+      <div className="flex flex-col items-end account gap-1">
+        <span className="account leading-5">Admin</span>
+        <p className="text-red-500 text-[14px] account leading-3">نماینده</p>
       </div>
       <img className="h-[60px] account" src="/defaultUser1.svg"></img>
       <FaAngleDown className="h-[20px]" />

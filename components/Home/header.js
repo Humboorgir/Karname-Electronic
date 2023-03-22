@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import Button from "@mui/material/Button";
 const Header = () => {
   const [open, setOpen] = useState(false);
   return (

@@ -8,7 +8,7 @@ const Header = () => {
       <nav>
         <ul
           className="hidden md:flex flex-row justify-between items-center px-[80px]
-        list-none max-w-full top-0 h-[90px] rounded-xl border-[0.5px] border-gray-300 text-lg shadow-lg"
+        list-none max-w-full top-0 h-[90px] rounded-xl border-[0.5px] border-gray-300 text-lg shadow-lg relative"
         >
           <div className="flex flex-row items-center justify-center gap-2 h-[55px] w-[130px]">
             <img className="h-[60px]" src="/logo.svg"></img>
@@ -17,8 +17,8 @@ const Header = () => {
             </span>{" "}
             کارنامه
           </div>
-          <div className="hidden lg:flex flex-row justify-center items-center basis-2/4">
-            <Li href="/">
+          <div className="hidden lg:flex flex-row justify-center items-center absolute left-[50%] translate-x-[-50%]">
+            <Li href="/panel/admin">
               خانه
               <FaHome className="mb-[2px]" />
             </Li>

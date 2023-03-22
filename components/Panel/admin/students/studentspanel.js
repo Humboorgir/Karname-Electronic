@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import Student from "@/components/Panel/admin/student";
-import AddStudent from "@/components/Panel/admin/addstudent";
-import RemoveStudent from "@/components/Panel/admin/removestudent";
-import EditStudent from "@/components/Panel/admin/editstudent";
+import Student from "@/components/Panel/admin/students/student";
+import AddStudent from "@/components/Panel/admin/students/addstudent";
+import RemoveStudent from "@/components/Panel/admin/students/removestudent";
+import EditStudent from "@/components/Panel/admin/students/editstudent";
 const StudentsPanel = ({ Students }) => {
   const [students, setStudents] = useState([]);
   useEffect(() => {

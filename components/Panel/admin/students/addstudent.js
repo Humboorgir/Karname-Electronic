@@ -22,7 +22,7 @@ const AddStudent = ({ handleClose, setStudents }) => {
       pfp: Math.floor(Math.random() * 5 + 1),
     };
     const JSONdata = JSON.stringify(data);
-    const response = await fetch("/api/register", {
+    const response = await fetch("/api/addstudent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

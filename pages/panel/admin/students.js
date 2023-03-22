@@ -1,7 +1,6 @@
 import Head from "@/components/head";
 import Header from "@/components/Panel/admin/header";
-import StudentsPanel from "@/components/Panel/admin/studentspanel";
-import mongoConnect from "@/utils/mongoconnect";
+import StudentsPanel from "@/components/Panel/admin/students/studentspanel";
 import Footer from "@/components/footer";
 const Students = ({ Students }) => {
   return (
