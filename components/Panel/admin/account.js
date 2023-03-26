@@ -20,7 +20,7 @@ const Account = () => {
         <span className="account leading-5">Admin</span>
         <p className="text-red-500 text-[14px] account leading-3">نماینده</p>
       </div>
-      <img className="h-[60px] account" src="/defaultUser1.svg"></img>
+      <img className="h-[60px] account" src="/defaultTeacher1.svg"></img>
       <FaAngleDown className="h-[20px]" />
       {open && <DropdownMenu />}
     </div>

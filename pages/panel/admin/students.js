@@ -14,7 +14,7 @@ const Students = ({ Students }) => {
 };
 export async function getServerSideProps() {
   let students = await fetch(`${process.env.NEXTAUTH_URL}/api/students`, {
-    method: "POST",
+    method: "GET",
   });
   let Students = await students.json();
   return {

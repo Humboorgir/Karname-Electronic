@@ -21,7 +21,7 @@ const Student = ({ id, name, pfp, handleClick }) => {
         </span>
       </span>
       <span>{name}</span>
-      <img className="h-[40px]" src={`/defaultUser${pfp}.svg`} />
+      <img className="h-[40px]" src={`/defaultStudent${pfp}.svg`} />
     </li>
   );
 };

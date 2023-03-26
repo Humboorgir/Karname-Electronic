@@ -54,7 +54,7 @@ const StudentsPanel = ({ Students }) => {
         <h1
           key="title"
           className="flex items-center justify-end bg-blue text-white top-0 left-0 
-        rounded-t-lg absolute w-[calc(100%+4px)] ml-[-2px] h-[55px] mt-[-2px] px-[5%]"
+        rounded-t-lg absolute w-[calc(100%+4px)] ml-[-2px] h-[55px] mt-[-2px] px-[8%]"
         >
           لیست دانش آموزان
         </h1>

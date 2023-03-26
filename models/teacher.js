@@ -1,15 +1,9 @@
 import mongoose from "mongoose";
-
-const teacherSchema = new mongoose.Schema({
-  name: reqString,
-  lastName: reqString,
-  username: reqString,
-  password: reqString,
+const teacher = new mongoose.Schema({
+  id: String,
+  name: String,
+  username: String,
+  password: String,
+  pfp: String,
 });
-const reqString = {
-  type: String,
-  required: true,
-};
-const teacherModel = new mongoose.model("teachers", teacherSchema);
-
-export default teacherModel;
+export default mongoose.models.teachers || mongoose.model("teachers", teacher);
