@@ -1,8 +1,16 @@
 import Teacher from "@/components/Panel/admin/teachers/teacher";
 import { FaPlus } from "react-icons/fa";
+import { useState, useEffect } from "react";
 const TeachersPanel = ({ Teachers }) => {
+  const [teachers, setTeachers] = useState([]);
+  const [openAddTeacher, setOpenAddTeacher] = useState({});
+  useEffect(() => {
+    setTeachers(Teachers);
+  }, []);
   function handleClick(action, name) {
     switch (action) {
+      case "addTeacher":
+
       default:
         return;
       // case "addStudent":
@@ -47,7 +55,7 @@ const TeachersPanel = ({ Teachers }) => {
         <li className="flex flex-row justify-end items-center gap-6 pb-3 px-5">
           <span className="mr-auto flex flex-row items-center gap-2 hoverCircleAnimation">
             <FaPlus
-              onClick={() => handleClick("addStudent")}
+              onClick={() => handleClick("addTeacher")}
               className="text-neutral-400 transition-colors duration-200 cursor-pointer
             hover:text-neutral-500 relative"
             />
