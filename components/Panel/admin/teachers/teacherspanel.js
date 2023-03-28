@@ -1,34 +1,48 @@
 import Teacher from "@/components/Panel/admin/teachers/teacher";
+import AddTeacher from "@/components/Panel/admin/teachers/addteacher";
+import RemoveTeacher from "@/components/Panel/admin/teachers/removeteacher";
+import EditTeacher from "@/components/Panel/admin/teachers/editteacher";
 import { FaPlus } from "react-icons/fa";
 import { useState, useEffect } from "react";
 const TeachersPanel = ({ Teachers }) => {
   const [teachers, setTeachers] = useState([]);
-  const [openAddTeacher, setOpenAddTeacher] = useState({});
+  const [openAddTeacher, setOpenAddTeacher] = useState(false);
+  const [removeTeacher, setRemoveTeacher] = useState({
+    open: false,
+    id: null,
+  });
+  const [editTeacher, setEditTeacher] = useState({
+    open: false,
+    id: null,
+  });
   useEffect(() => {
     setTeachers(Teachers);
   }, []);
-  function handleClick(action, name) {
+  function handleClick(action, id) {
     switch (action) {
       case "addTeacher":
-
+        setOpenAddTeacher(true);
+        break;
+      case "removeTeacher":
+        setRemoveTeacher({
+          open: true,
+          id: id,
+        });
+        break;
+      case "editTeacher":
+        setEditTeacher({
+          open: true,
+          id: id,
+        });
+        break;
       default:
         return;
-      // case "addStudent":
-      //   setOpenAddStudent(true);
-      //   break;
-      // case "removeStudent":
-      //   setRemoveStudent({
-      //     open: true,
-      //     name: name,
-      //   });
-      //   break;
-      // case "editStudent":
-      //   setEditStudent({
-      //     open: true,
-      //     name: name,
-      //   });
-      //   break;
     }
+  }
+  function handleClose() {
+    if (openAddTeacher) setOpenAddTeacher(false);
+    if (removeTeacher.open) setRemoveTeacher({ open: false, id: null });
+    if (editTeacher.open) setEditTeacher({ open: false, id: null });
   }
   return (
     //  the main part of the page
@@ -45,10 +59,10 @@ const TeachersPanel = ({ Teachers }) => {
         >
           لیست دبیران
         </h1>
-        {teachers.map(({ id, name, pfp }) => {
+        {teachers.map(({ _id, name, pfp }) => {
           if (!name) return;
           return (
-            <Teacher id={id} name={name} pfp={pfp} handleClick={handleClick} />
+            <Teacher id={_id} name={name} pfp={pfp} handleClick={handleClick} />
           );
         })}
         {/* add students */}
@@ -67,6 +81,27 @@ const TeachersPanel = ({ Teachers }) => {
           />
         </li>
       </ul>
+      {/* modals */}
+      {openAddTeacher && (
+        <AddTeacher handleClose={handleClose} setTeachers={setTeachers} />
+      )}
+      {/* the variable "removeTeacher" contains the ID of the teacher we're going to be removing. */}
+      {removeTeacher.open && (
+        <RemoveTeacher
+          handleClose={handleClose}
+          setTeachers={setTeachers}
+          removeTeacher={removeTeacher}
+        />
+      )}
+      {/* the variable "editTeacher" contains the ID of the teacher we're going to be editing. */}
+      {editTeacher.open && (
+        <EditTeacher
+          handleClose={handleClose}
+          teachers={teachers}
+          setTeachers={setTeachers}
+          editTeacher={editTeacher}
+        />
+      )}
     </div>
   );
 };
