@@ -65,7 +65,7 @@ const TeachersPanel = ({ Teachers }) => {
             <Teacher id={_id} name={name} pfp={pfp} handleClick={handleClick} />
           );
         })}
-        {/* add students */}
+        {/* add teachers */}
         <li className="flex flex-row justify-end items-center gap-6 pb-3 px-5">
           <span className="mr-auto flex flex-row items-center gap-2 hoverCircleAnimation">
             <FaPlus

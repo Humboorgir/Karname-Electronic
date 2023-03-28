@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
+import managersModel from "@/models/managers";
 export const authOptions = {
   debug: true,
   pages: {
@@ -14,13 +14,15 @@ export const authOptions = {
       type: "credentials",
 
       async authorize(credentials, req) {
-        console.log("test");
-        const admins = [
-          {
-            username: "admin",
-            password: "admin",
-          },
-        ];
+        const storedAdmins = managersModel.find({});
+        const admins = storedAdmins.length
+          ? storedAdmins
+          : [
+              {
+                username: "admin",
+                password: "admin",
+              },
+            ];
         const user = admins.find(
           (admin) =>
             admin.username === credentials.username &&
