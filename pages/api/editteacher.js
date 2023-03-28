@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   }
   let response = {
     ok: true,
-    text: `اطلاعات دانش آموز با موفقیت پردازش شد`,
+    text: `اطلاعات دبیر با موفقیت پردازش شد`,
   };
   let Response = await JSON.stringify(response);
   res.status(200).send(Response);
