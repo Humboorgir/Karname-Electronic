@@ -5,7 +5,7 @@ import Footer from "@/components/footer";
 const Teachers = ({ Teachers }) => {
   return (
     <div className="flex flex-col min-h-[100svh] justify-between gap-5">
-      <Head page="مدیریت دانش آموزان" />
+      <Head page="مدیریت دبیران" />
       <Header />
       <TeachersPanel Teachers={Teachers} />
       <Footer />
