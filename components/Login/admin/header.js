@@ -19,7 +19,7 @@ const Header = () => {
             <li>
               <Link
                 className="bg-red-500 rounded-[20px] px-4 py-3 text-white"
-                href="/login/admin"
+                href="/"
               >
                 بازگشت به خانه
               </Link>

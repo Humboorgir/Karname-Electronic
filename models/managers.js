@@ -4,5 +4,6 @@ const manager = new mongoose.Schema({
   username: String,
   password: String,
   pfp: String,
+  role: String,
 });
 export default mongoose.models.managers || mongoose.model("managers", manager);

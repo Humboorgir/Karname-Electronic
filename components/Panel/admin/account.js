@@ -1,7 +1,7 @@
 import DropdownMenu from "./dropdown";
 import { useEffect, useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
-const Account = () => {
+const Account = ({ handleSignOut }) => {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     window.onclick = (e) => {
@@ -22,7 +22,7 @@ const Account = () => {
       </div>
       <img className="h-[60px] account" src="/defaultTeacher1.svg"></img>
       <FaAngleDown className="h-[20px]" />
-      {open && <DropdownMenu />}
+      {open && <DropdownMenu handleSignOut={handleSignOut} />}
     </div>
   );
 };

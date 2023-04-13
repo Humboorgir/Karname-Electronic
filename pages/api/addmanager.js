@@ -15,6 +15,7 @@ export default async function handler(req, res) {
     username,
     password: username,
     pfp,
+    role: "admin",
   });
   await data.save();
   let response = {

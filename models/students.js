@@ -4,5 +4,6 @@ const student = new mongoose.Schema({
   username: String,
   password: String,
   pfp: String,
+  role: String,
 });
 export default mongoose.models.students || mongoose.model("students", student);

@@ -1,8 +1,11 @@
 import Li from "./li";
 import Account from "./account";
 import { FaHome, FaInfoCircle, FaPhone } from "react-icons/fa";
-import { FaBars } from "react-icons/fa";
+import { signOut } from "next-auth/react";
 const Header = () => {
+  function handleSignOut() {
+    signOut({ callbackUrl: `${window.location.origin}/` });
+  }
   return (
     <header>
       <nav>
@@ -31,7 +34,7 @@ const Header = () => {
               <FaInfoCircle className="mb-[2px]" />
             </Li>
           </div>
-          <Account>حساب کاربری</Account>
+          <Account handleSignOut={handleSignOut}>حساب کاربری</Account>
         </ul>
         <ul
           className="md:hidden flex flex-row justify-center items-center px-[80px] list-none max-w-full top-0 h-[90px]
@@ -41,7 +44,9 @@ const Header = () => {
             src="/logo.svg"
             className="h-[60px] absolute left-[9%] cursor-pointer"
           />
-          <Account>حساب کاربری</Account>
+          {/* lost my braincells with this one, spent 30 minutes trying to figure out why handleSignOut is 
+          undefined just to realize I was only passing it down as a prop for the desktop version */}
+          <Account handleSignOut={handleSignOut}>حساب کاربری</Account>
         </ul>
       </nav>
     </header>
