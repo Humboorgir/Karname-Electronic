@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-const AddTeacher = ({ setManagers }) => {
+const AddModal = ({ setManagers }) => {
   const modalRef = useRef(null);
 
   const image = String(Math.floor(Math.random() * 5) + 1);
@@ -89,4 +89,4 @@ async function handleSubmit(e, setManagers, modalRef) {
   ]);
 }
 
-export default AddTeacher;
+export default AddModal;
