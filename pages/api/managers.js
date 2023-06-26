@@ -6,6 +6,7 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     let data = await prisma.manager.findMany({
       select: {
+        id: true,
         name: true,
         image: true,
       },
@@ -15,12 +16,6 @@ export default async function handler(req, res) {
 
   // handling post requests
   if (req.method === "POST") {
-    console.table({
-      username,
-      name,
-      image,
-    });
-    console.log("receiving a post request");
     await prisma.manager.create({
       data: {
         name,
