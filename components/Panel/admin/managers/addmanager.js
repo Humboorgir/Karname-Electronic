@@ -14,14 +14,16 @@ const TextField = ({ id, label }) => (
   </div>
 );
 const AddTeacher = ({ handleClose, setManagers }) => {
+  const image = Math.floor(Math.random() * 5) + 1;
   async function handleSubmit(e) {
     e.preventDefault();
     let data = {
       name: e.target.name.value,
       username: e.target.username.value,
+      image,
     };
     const JSONdata = JSON.stringify(data);
-    const response = await fetch("/api/addmanager", {
+    const response = await fetch("/api/managers", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +31,7 @@ const AddTeacher = ({ handleClose, setManagers }) => {
       body: JSONdata,
     });
     let res = await response.json();
-    if (!res.ok) {
+    if (response.status !== 200) {
       document.querySelector("body").classList.add("shake");
       setTimeout(() => {
         document.querySelector("body").classList.remove("shake");
@@ -42,7 +44,7 @@ const AddTeacher = ({ handleClose, setManagers }) => {
       {
         name: data.name,
         username: data.username,
-        pfp: data.pfp,
+        pfp: data.image,
       },
     ]);
   }
