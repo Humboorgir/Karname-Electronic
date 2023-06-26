@@ -55,18 +55,17 @@ const AddModal = ({ setManagers }) => {
 async function handleSubmit(e, setManagers, modalRef) {
   e.preventDefault();
   const image = Math.floor(Math.random() * 5) + 1;
-  let data = {
+  const data = {
     username: e.target.username.value,
     name: e.target.name.value,
     image,
   };
-  const JSONdata = JSON.stringify(data);
   const response = await fetch("/api/managers", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSONdata,
+    body: JSON.stringify(data),
   });
 
   if (response.status !== 200) {

@@ -1,10 +1,6 @@
 import prisma from "@/lib/prisma";
 
 export default async function handler(req, res) {
-  console.log("A request!");
-  const { username, name } = req.body;
-  let { image } = req.body;
-  image = String(image);
   // handling get requests
   if (req.method === "GET") {
     let data = await prisma.manager.findMany({
@@ -19,6 +15,10 @@ export default async function handler(req, res) {
 
   // handling post requests
   if (req.method === "POST") {
+    if (!req.body) return;
+    const { username, name } = req.body;
+    let image = String(req.body.image);
+
     await prisma.manager.create({
       data: {
         name,
@@ -31,10 +31,12 @@ export default async function handler(req, res) {
   }
 
   if (req.method === "DELETE") {
-    console.log("delete request!");
+    if (!req.body) return;
+    const { id } = req.body;
+
     await prisma.manager.delete({
       where: {
-        username,
+        id,
       },
     });
     return res.status(200).send("OK");

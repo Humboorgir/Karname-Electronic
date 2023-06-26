@@ -42,9 +42,16 @@ const DeleteModal = ({ setManagers, managerId }) => {
 
 async function handleSubmit(e, setManagers, managerId, modalRef) {
   e.preventDefault();
+
+  const data = {
+    id: managerId,
+  };
   let response = await fetch("/api/managers", {
     method: "DELETE",
-    body: managerId,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
   });
 
   if (!response.status === 200) return console.log("unsuccessful");
