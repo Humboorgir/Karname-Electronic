@@ -14,12 +14,12 @@ const TextField = ({ id, label }) => (
   </div>
 );
 const AddTeacher = ({ handleClose, setManagers }) => {
-  const image = Math.floor(Math.random() * 5) + 1;
+  const image = String(Math.floor(Math.random() * 5) + 1);
   async function handleSubmit(e) {
     e.preventDefault();
     let data = {
-      name: e.target.name.value,
       username: e.target.username.value,
+      name: e.target.name.value,
       image,
     };
     const JSONdata = JSON.stringify(data);
@@ -30,7 +30,7 @@ const AddTeacher = ({ handleClose, setManagers }) => {
       },
       body: JSONdata,
     });
-    let res = await response.json();
+
     if (response.status !== 200) {
       document.querySelector("body").classList.add("shake");
       setTimeout(() => {
@@ -44,7 +44,7 @@ const AddTeacher = ({ handleClose, setManagers }) => {
       {
         name: data.name,
         username: data.username,
-        pfp: data.image,
+        image: data.image,
       },
     ]);
   }

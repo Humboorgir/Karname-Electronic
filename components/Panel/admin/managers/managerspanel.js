@@ -59,10 +59,15 @@ const ManagersPanel = ({ Managers }) => {
         >
           لیست نمایندگان
         </h1>
-        {managers.map(({ _id, name, pfp }) => {
+        {managers.map(({ _id, name, image }) => {
           if (!name) return;
           return (
-            <Manager id={_id} name={name} pfp={pfp} handleClick={handleClick} />
+            <Manager
+              id={_id}
+              name={name}
+              image={image}
+              handleClick={handleClick}
+            />
           );
         })}
         {/* add managers */}

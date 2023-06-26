@@ -2,7 +2,6 @@ import prisma from "@/lib/prisma";
 
 export default async function handler(req, res) {
   const { username, name, image } = req.body;
-
   // handling get requests
   if (req.method === "GET") {
     let data = await prisma.manager.findMany({
@@ -16,6 +15,12 @@ export default async function handler(req, res) {
 
   // handling post requests
   if (req.method === "POST") {
+    console.table({
+      username,
+      name,
+      image,
+    });
+    console.log("receiving a post request");
     await prisma.manager.create({
       data: {
         name,
@@ -25,6 +30,6 @@ export default async function handler(req, res) {
       },
     });
 
-    res.sendStatus(200).send("OK");
+    res.status(200).send("OK");
   }
 }

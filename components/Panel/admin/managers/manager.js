@@ -1,5 +1,5 @@
 import { FaTrash, FaEdit } from "react-icons/fa";
-const Manager = ({ id, name, pfp, handleClick }) => {
+const Manager = ({ id, name, image, handleClick }) => {
   return (
     <li
       key={id}
@@ -21,10 +21,9 @@ const Manager = ({ id, name, pfp, handleClick }) => {
         </span>
       </span>
       <span>{name}</span>
-      <img className="h-[40px]" src={`/defaultTeacher${pfp}.svg`} />
+      <img className="h-[40px]" src={`/defaultTeacher${image}.svg`} />
     </li>
   );
 };
-
 
 export default Manager;
