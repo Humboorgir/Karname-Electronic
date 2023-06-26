@@ -19,7 +19,6 @@ const AddTeacher = ({ handleClose, setManagers }) => {
     let data = {
       name: e.target.name.value,
       username: e.target.username.value,
-      pfp: Math.floor(Math.random() * 5 + 1),
     };
     const JSONdata = JSON.stringify(data);
     const response = await fetch("/api/addmanager", {

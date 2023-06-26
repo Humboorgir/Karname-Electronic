@@ -26,4 +26,5 @@ const Manager = ({ id, name, pfp, handleClick }) => {
   );
 };
 
+
 export default Manager;
