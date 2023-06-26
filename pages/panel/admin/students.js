@@ -1,6 +1,6 @@
 import Head from "@/components/head";
-import Header from "@/components/Panel/admin/header";
-import StudentsPanel from "@/components/Panel/admin/students/studentspanel";
+import Header from "@/components/panel/admin/navbar";
+import StudentsPanel from "@/components/panel/admin/students/studentspanel";
 import Footer from "@/components/footer";
 const Students = ({ Students }) => {
   return (

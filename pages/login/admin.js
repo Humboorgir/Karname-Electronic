@@ -1,7 +1,7 @@
 import Head from "@/components/head";
-import Header from "@/components/Login/admin/header";
-import Error from "@/components/Login/admin/error";
-import Form from "@/components/Login/admin/form";
+import Header from "@/components/login/admin/header";
+import Error from "@/components/login/admin/error";
+import Form from "@/components/login/admin/form";
 import Footer from "@/components/footer";
 
 import { useEffect, useState } from "react";

@@ -1,6 +1,6 @@
 import Head from "@/components/head";
-import Header from "@/components/Panel/admin/header";
-import TeachersPanel from "@/components/Panel/admin/teachers/teacherspanel";
+import Header from "@/components/panel/admin/navbar";
+import TeachersPanel from "@/components/panel/admin/teachers/teacherspanel";
 import Footer from "@/components/footer";
 const Teachers = ({ Teachers }) => {
   return (

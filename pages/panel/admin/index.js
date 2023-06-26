@@ -1,6 +1,6 @@
 import Head from "@/components/head";
-import Header from "@/components/Panel/admin/header";
-import Panel from "@/components/Panel/admin/panel";
+import Header from "@/components/panel/admin/navbar";
+import Panel from "@/components/panel/admin/panel";
 import Footer from "@/components/footer";
 import { useSession, getSession } from "next-auth/react";
 const admin = () => {

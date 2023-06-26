@@ -1,12 +1,12 @@
 import Head from "@/components/head";
-import Header from "@/components/Panel/admin/header";
-import ManagersPanel from "@/components/Panel/admin/managers/managerspanel";
+import Navbar from "@/components/panel/admin/navbar";
+import ManagersPanel from "@/components/panel/admin/managers/managerspanel";
 import Footer from "@/components/footer";
 const Managers = ({ Managers }) => {
   return (
     <div className="flex flex-col min-h-[100svh] justify-between gap-5">
       <Head page="مدیریت نمایندگان " />
-      <Header />
+      <Navbar />
       <ManagersPanel Managers={Managers} />
       <Footer />
     </div>
