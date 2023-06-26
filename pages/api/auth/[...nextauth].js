@@ -49,7 +49,7 @@ export const authOptions = {
             );
         // if the username and password provided matches none, it returns an empty Array which we convert to a null variable.
         if (Array.isArray(user) && !user.length) user = null;
-
+        if (!user.role) user.role = "admin";
         if (user) {
           console.table(user);
           return user;
