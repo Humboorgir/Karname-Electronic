@@ -1,5 +1,5 @@
 import { FaTrash, FaEdit } from "react-icons/fa";
-const Manager = ({ id, name, image, handleClick }) => {
+const Manager = ({ id, name, image, openModal }) => {
   return (
     <li
       key={id}
@@ -9,13 +9,13 @@ const Manager = ({ id, name, image, handleClick }) => {
       <span className="mr-auto flex flex-row items-center gap-2">
         <span className="relative">
           <FaEdit
-            onClick={() => handleClick("editManager", id)}
+            onClick={() => openModal("edit", id)}
             className="text-gray-800 mb-[2px] cursor-pointer"
           />
         </span>
         <span className>
           <FaTrash
-            onClick={() => handleClick("removeManager", id)}
+            onClick={() => openModal("delete", id)}
             className="text-gray-800 relative cursor-pointer"
           />
         </span>
