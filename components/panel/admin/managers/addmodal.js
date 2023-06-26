@@ -76,16 +76,12 @@ async function handleSubmit(e, setManagers, modalRef) {
     return;
   }
 
+  const res = await response.json();
+
+  console.log(res);
   modalRef.current.close();
 
-  setManagers((managers) => [
-    ...managers,
-    {
-      name: data.name,
-      username: data.username,
-      image: data.image,
-    },
-  ]);
+  setManagers((managers) => [...managers, res]);
 }
 
 export default AddModal;

@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     const { username, name } = req.body;
     let image = String(req.body.image);
 
-    await prisma.manager.create({
+    const data = await prisma.manager.create({
       data: {
         name,
         username,
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         image,
       },
     });
-    res.status(200).send("OK");
+    res.status(200).json({ name: data.name, id: data.id, image: data.image });
   }
 
   if (req.method === "DELETE") {
