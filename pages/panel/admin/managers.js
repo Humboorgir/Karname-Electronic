@@ -26,7 +26,7 @@ const ManagersPage = ({ managers_ }) => {
         window.addModal.showModal();
         break;
       case "edit":
-        window.edit.showModal();
+        window.editModal.showModal();
         break;
       case "delete":
         window.deleteModal.showModal();
@@ -61,7 +61,7 @@ const ManagersPage = ({ managers_ }) => {
       <Footer />
 
       {/* modals  */}
-      <AddModal />
+      <AddModal setManagers={setManagers} />
       <EditModal />
       <DeleteModal />
     </div>

@@ -1,12 +1,13 @@
-import Backdrop from "@/components/backdrop";
-import { FaRegTimesCircle } from "react-icons/fa";
+import { useRef } from "react";
 
-const AddTeacher = ({ handleClose, setManagers }) => {
+const AddTeacher = ({ setManagers }) => {
+  const modalRef = useRef(null);
+
   const image = String(Math.floor(Math.random() * 5) + 1);
   return (
-    <dialog id="addModal" className="modal">
+    <dialog id="addModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={(e) => handleSubmit(e, setManagers, modalRef)}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]"
@@ -15,12 +16,16 @@ const AddTeacher = ({ handleClose, setManagers }) => {
         <input
           type="text"
           placeholder="Username"
+          name="username"
           className="input border border-neutral-400 w-full max-w-xs mb-4"
+          required
         />
         <input
           type="text"
           placeholder="Full name"
+          name="name"
           className="input border border-neutral-400 w-full max-w-xs"
+          required
         />
 
         <div className="modal-action">
@@ -31,9 +36,11 @@ const AddTeacher = ({ handleClose, setManagers }) => {
             Submit
           </button>
           {/* if there is a button in form, it will close the modal */}
-          <button className="btn btn-outline btn-error hover:!text-white text-white">
-            Cancel
-          </button>
+          <form method="dialog">
+            <button className="btn btn-outline btn-error hover:!text-white text-white">
+              Cancel
+            </button>
+          </form>
         </div>
       </form>
 
@@ -45,8 +52,9 @@ const AddTeacher = ({ handleClose, setManagers }) => {
   );
 };
 
-async function handleSubmit(e) {
+async function handleSubmit(e, setManagers, modalRef) {
   e.preventDefault();
+  const image = Math.floor(Math.random() * 5) + 1;
   let data = {
     username: e.target.username.value,
     name: e.target.name.value,
@@ -68,7 +76,9 @@ async function handleSubmit(e) {
     }, 500);
     return;
   }
-  handleClose();
+
+  modalRef.current.close();
+
   setManagers((managers) => [
     ...managers,
     {

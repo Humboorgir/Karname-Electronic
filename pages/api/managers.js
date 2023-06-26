@@ -1,7 +1,9 @@
 import prisma from "@/lib/prisma";
 
 export default async function handler(req, res) {
-  const { username, name, image } = req.body;
+  const { username, name } = req.body;
+  let { image } = req.body;
+  image = String(image);
   // handling get requests
   if (req.method === "GET") {
     let data = await prisma.manager.findMany({
