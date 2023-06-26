@@ -4,16 +4,24 @@ import Footer from "@/components/footer";
 
 import Managers from "@/components/panel/admin/managers/managers";
 import AddManager from "@/components/panel/admin/managers/addmanager";
+import AddModal from "@/components/panel/admin/managers/addmodal";
+import EditModal from "@/components/panel/admin/managers/editmodal";
+import DeleteModal from "@/components/panel/admin/managers/deletemodal";
 
 import { useState, useEffect } from "react";
 
 const ManagersPage = ({ managers_ }) => {
   const [managers, setManagers] = useState([]);
+  const [modal, setModal] = useState({});
+
   useEffect(() => {
     setManagers(managers_);
   }, []);
 
-  function openModal() {
+  function openModal(modal, id) {
+    if (!id) id = null;
+
+    setModal(modal, id);
     return;
   }
   return (
@@ -41,6 +49,11 @@ const ManagersPage = ({ managers_ }) => {
         </ul>
       </div>
       <Footer />
+
+      {/* modals  */}
+      {openModal.modal === "add" && <AddModal />}
+      {openModal.modal === "edit" && <EditModal />}
+      {openModal.modal === "delete" && <DeleteModal />}
     </div>
   );
 };
