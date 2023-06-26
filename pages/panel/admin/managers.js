@@ -63,7 +63,7 @@ const ManagersPage = ({ managers_ }) => {
       {/* modals  */}
       <AddModal setManagers={setManagers} />
       <EditModal />
-      <DeleteModal />
+      <DeleteModal setManagers={setManagers} managerId={managerId} />
     </div>
   );
 };

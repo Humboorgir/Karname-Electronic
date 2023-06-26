@@ -1,49 +1,57 @@
-import Backdrop from "@/components/backdrop";
-import { FaRegTimesCircle } from "react-icons/fa";
-const RemoveTeacher = ({ handleClose, setManagers, removeManager }) => {
-  async function handleSubmit(e) {
-    e.preventDefault();
-    let response = await fetch("/api/removemanager", {
-      method: "POST",
-      body: removeManager.id,
-    });
-    let res = await response.json();
-    if (res.ok) console.log("ok");
-    setManagers((managers) =>
-      managers.filter((manager) => manager._id !== removeManager.id)
-    );
-    handleClose();
-  }
+import { useRef } from "react";
+
+const DeleteModal = ({ setManagers, managerId }) => {
+  const modalRef = useRef(null);
+
   return (
-    <dialog handleClose={handleClose}>
+    <dialog id="deleteModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={() => handleSubmit(setManagers, managerId, modalRef)}
         onClick={(e) => e.stopPropagation()}
-        className="animate-scale relative flex flex-col items-center justify-center gap-4 
-        rounded-xl bg-white w-[min(350px,90vw)] h-[230px] mb-[5vh] px-8 pb-2 pt-8"
+        method="dialog"
+        className="modal-box flex flex-col w-[min(350px,98vw)]"
       >
-        <FaRegTimesCircle
-          className="text-[30px] absolute top-2 right-2 cursor-pointer"
-          onClick={handleClose}
-        />
-        <div className="flex flex-col gap-2">
-          <h1 className="bold text-lg text-center">
-            آیا از حذف نماینده مطمئن هستید؟
-          </h1>
-          <p className="pr-7 text-right">
-            با حذف این نماینده همه اطلاعات او برای همیشه حذف خواهد شد
-          </p>
+        <h3 className="bold text-xl text-center ">Are you sure?</h3>
+        <p className="pt-3 px-3 text-center">
+          By removing a manager from the system, all of their data will be
+          deleted.
+          <br /> This process cannot be undone.
+        </p>
+
+        <div className="modal-action">
+          <button
+            type="submit"
+            className="btn bg-red-500 btn-error hover:!text-white text-white"
+          >
+            Confirm
+          </button>
+          {/* if there is a button in form, it will close the modal */}
+          <form method="dialog">
+            <button className="btn btn-outline btn-neutral">Cancel</button>
+          </form>
         </div>
-        <button
-          type="submit"
-          className="bg-red-500 text-white h-[40px] w-[228px] rounded-3xl mt-[10px]
-           scale-1 transition-transform duration-300 clickAnimation"
-        >
-          تایید
-        </button>
+      </form>
+
+      {/* backdrop */}
+      <form method="dialog" className="modal-backdrop">
+        <button></button>
       </form>
     </dialog>
   );
 };
 
-export default RemoveTeacher;
+async function handleSubmit(setManagers, managerId, modalRef) {
+  e.preventDefault();
+  let response = await fetch("/api/manager", {
+    method: "DELETE",
+    body: managerId,
+  });
+
+  setManagers((managers) =>
+    managers.filter((manager) => manager._id !== removeManager.id)
+  );
+
+  modalRef.current.close();
+}
+
+export default DeleteModal;
