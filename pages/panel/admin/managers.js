@@ -45,7 +45,7 @@ const ManagersPage = ({ managers_ }) => {
           </h1>
           <Managers managers={managers} openModal={openModal} />
           {/* add managers */}
-          <AddManager />
+          <AddManager openModal={openModal} />
         </ul>
       </div>
       <Footer />
