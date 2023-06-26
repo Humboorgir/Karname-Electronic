@@ -15,7 +15,7 @@ const RemoveTeacher = ({ handleClose, setManagers, removeManager }) => {
     handleClose();
   }
   return (
-    <Backdrop handleClose={handleClose}>
+    <dialog handleClose={handleClose}>
       <form
         onSubmit={handleSubmit}
         onClick={(e) => e.stopPropagation()}
@@ -42,7 +42,7 @@ const RemoveTeacher = ({ handleClose, setManagers, removeManager }) => {
           تایید
         </button>
       </form>
-    </Backdrop>
+    </dialog>
   );
 };
 

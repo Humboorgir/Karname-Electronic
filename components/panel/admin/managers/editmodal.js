@@ -47,7 +47,7 @@ const EditTeacher = ({ handleClose, managers, setManagers, editManager }) => {
     setManagers(newManagers);
   }
   return (
-    <Backdrop handleClose={handleClose}>
+    <dialog handleClose={handleClose}>
       <form
         onSubmit={handleSubmit}
         onClick={(e) => e.stopPropagation()}
@@ -68,7 +68,7 @@ const EditTeacher = ({ handleClose, managers, setManagers, editManager }) => {
           ویراش اطلاعات
         </button>
       </form>
-    </Backdrop>
+    </dialog>
   );
 };
 

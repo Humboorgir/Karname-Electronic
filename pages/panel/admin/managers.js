@@ -12,16 +12,26 @@ import { useState, useEffect } from "react";
 
 const ManagersPage = ({ managers_ }) => {
   const [managers, setManagers] = useState([]);
-  const [modal, setModal] = useState({});
 
+  const [managerId, setManagerId] = useState(null);
   useEffect(() => {
     setManagers(managers_);
   }, []);
 
   function openModal(modal, id) {
-    if (!id) id = null;
+    if (id) setManagerId(id);
 
-    setModal(modal, id);
+    switch (modal) {
+      case "add":
+        window.addModal.showModal();
+        break;
+      case "edit":
+        window.edit.showModal();
+        break;
+      case "delete":
+        window.deleteModal.showModal();
+        break;
+    }
     return;
   }
   return (
@@ -51,9 +61,9 @@ const ManagersPage = ({ managers_ }) => {
       <Footer />
 
       {/* modals  */}
-      {openModal.modal === "add" && <AddModal />}
-      {openModal.modal === "edit" && <EditModal />}
-      {openModal.modal === "delete" && <DeleteModal />}
+      <AddModal />
+      <EditModal />
+      <DeleteModal />
     </div>
   );
 };
