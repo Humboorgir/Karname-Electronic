@@ -1,7 +1,7 @@
-import Manager from "@/components/Panel/admin/managers/manager";
-import AddManager from "@/components/Panel/admin/managers/addmanager";
-import RemoveManager from "@/components/Panel/admin/managers/removemanager";
-import EditManager from "@/components/Panel/admin/managers/editmanager";
+import Manager from "@/components/panel/admin/managers/manager";
+import AddManager from "@/components/panel/admin/managers/addmanager";
+import RemoveManager from "@/components/panel/admin/managers/removemanager";
+import EditManager from "@/components/panel/admin/managers/editmanager";
 import { FaPlus } from "react-icons/fa";
 import { useState, useEffect } from "react";
 const ManagersPanel = ({ Managers }) => {

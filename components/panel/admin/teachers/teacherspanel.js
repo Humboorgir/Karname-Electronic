@@ -1,7 +1,7 @@
-import Teacher from "@/components/Panel/admin/teachers/teacher";
-import AddTeacher from "@/components/Panel/admin/teachers/addteacher";
-import RemoveTeacher from "@/components/Panel/admin/teachers/removeteacher";
-import EditTeacher from "@/components/Panel/admin/teachers/editteacher";
+import Teacher from "@/components/panel/admin/teachers/teacher";
+import AddTeacher from "@/components/panel/admin/teachers/addteacher";
+import RemoveTeacher from "@/components/panel/admin/teachers/removeteacher";
+import EditTeacher from "@/components/panel/admin/teachers/editteacher";
 import { FaPlus } from "react-icons/fa";
 import { useState, useEffect } from "react";
 const TeachersPanel = ({ Teachers }) => {
