@@ -6,7 +6,7 @@ const DeleteModal = ({ setManagers, managerId }) => {
   return (
     <dialog id="deleteModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={() => handleSubmit(setManagers, managerId, modalRef)}
+        onSubmit={(e) => handleSubmit(e, setManagers, managerId, modalRef)}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]"
@@ -40,15 +40,17 @@ const DeleteModal = ({ setManagers, managerId }) => {
   );
 };
 
-async function handleSubmit(setManagers, managerId, modalRef) {
+async function handleSubmit(e, setManagers, managerId, modalRef) {
   e.preventDefault();
-  let response = await fetch("/api/manager", {
+  let response = await fetch("/api/managers", {
     method: "DELETE",
     body: managerId,
   });
 
+  if (!response.status === 200) return console.log("unsuccessful");
+
   setManagers((managers) =>
-    managers.filter((manager) => manager._id !== removeManager.id)
+    managers.filter((manager) => manager.id !== managerId)
   );
 
   modalRef.current.close();

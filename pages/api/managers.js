@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 
 export default async function handler(req, res) {
+  console.log("A request!");
   const { username, name } = req.body;
   let { image } = req.body;
   image = String(image);
@@ -26,14 +27,16 @@ export default async function handler(req, res) {
         image,
       },
     });
-
-    if (req.method === "DELETE") {
-      await prisma.manager.delete({
-        where: {
-          username,
-        },
-      });
-    }
     res.status(200).send("OK");
+  }
+
+  if (req.method === "DELETE") {
+    console.log("delete request!");
+    await prisma.manager.delete({
+      where: {
+        username,
+      },
+    });
+    return res.status(200).send("OK");
   }
 }
