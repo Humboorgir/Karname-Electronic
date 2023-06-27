@@ -1,75 +1,90 @@
-import Backdrop from "@/components/backdrop";
-import { FaRegTimesCircle } from "react-icons/fa";
-const TextField = ({ id, label }) => (
-  <div className="flex flex-col items-start">
-    <label htmlFor={id} className="ml-[4%]">
-      {label}
-    </label>
-    <input
-      id={id}
-      name={id}
-      placeholder={label}
-      className="rounded-md px-2 py-2 border-2 border-neutral-500 focus:outline-none"
-    ></input>
-  </div>
-);
-const EditTeacher = ({ handleClose, managers, setManagers, editManager }) => {
-  async function handleSubmit(e) {
-    e.preventDefault();
-    let data = {
-      oldId: editManager.id,
-      name: e.target.name.value,
-      username: e.target.username.value,
-    };
-    const JSONdata = JSON.stringify(data);
-    const response = await fetch("/api/editmanager", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSONdata,
-    });
-    let res = await response.json();
-    if (!res.ok) {
-      document.querySelector("body").classList.add("shake");
-      setTimeout(() => {
-        document.querySelector("body").classList.remove("shake");
-      }, 500);
-      return;
-    }
-    handleClose();
-    let newManagers = managers.slice();
-    let theManager = newManagers.find(
-      (manager) => manager._id == editManager.id
-    );
-    let index = newManagers.indexOf(theManager);
-    newManagers[index].name = e.target.name.value;
-    setManagers(newManagers);
-  }
+import { useRef } from "react";
+
+const EditModal = ({ setManagers, managerId }) => {
+  const modalRef = useRef(null);
+
   return (
-    <dialog handleClose={handleClose}>
+    <dialog id="editModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={(e) => handleSubmit(e, setManagers, managerId, modalRef)}
         onClick={(e) => e.stopPropagation()}
-        className="animate-scale relative flex flex-col items-center justify-center gap-4 
-        rounded-xl bg-white w-[min(350px,90vw)] h-[300px] mb-[5vh]"
+        method="dialog"
+        className="modal-box flex flex-col w-[min(350px,98vw)]"
       >
-        <FaRegTimesCircle
-          className="text-[30px] absolute top-2 right-2 cursor-pointer"
-          onClick={handleClose}
+        <h3 className="text-lg mb-3">Edit a manager's information</h3>
+        <input
+          type="text"
+          placeholder="Username"
+          name="username"
+          className="input border border-neutral-400 w-full max-w-xs mb-4"
+          required
         />
-        <TextField id="name" label="نام جدید" />
-        <TextField id="username" label="کد ملی جدید" />
-        <button
-          type="submit"
-          className="bg-blue text-white h-[40px] w-[228px] rounded-3xl mt-[10px]
-           scale-1 transition-transform duration-300 clickAnimation"
-        >
-          ویراش اطلاعات
-        </button>
+        <input
+          type="text"
+          placeholder="Full name"
+          name="name"
+          className="input border border-neutral-400 w-full max-w-xs"
+          required
+        />
+
+        <div className="modal-action">
+          <button
+            type="submit"
+            className="btn bg-blue text-white hover:bg-sky-400"
+          >
+            Submit
+          </button>
+          {/* if there is a button in form, it will close the modal */}
+          <form method="dialog">
+            <button className="btn btn-outline btn-error hover:!text-white text-white">
+              Cancel
+            </button>
+          </form>
+        </div>
+      </form>
+
+      {/* backdrop */}
+      <form method="dialog" className="modal-backdrop">
+        <button></button>
       </form>
     </dialog>
   );
 };
 
-export default EditTeacher;
+async function handleSubmit(e, setManagers, managerId, modalRef) {
+  e.preventDefault();
+  const data = {
+    username: e.target.username.value,
+    name: e.target.name.value,
+    id: managerId,
+  };
+  const response = await fetch("/api/managers", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (response.status !== 200) {
+    document.querySelector("body").classList.add("shake");
+    setTimeout(() => {
+      document.querySelector("body").classList.remove("shake");
+    }, 500);
+    return;
+  }
+
+  modalRef.current.close();
+  setManagers((managers) => {
+    const updatedManagers = managers.map((manager) => {
+      if (manager.id === managerId) {
+        return { ...manager, name: data.name };
+      } else {
+        return manager;
+      }
+    });
+    return updatedManagers;
+  });
+}
+
+export default EditModal;

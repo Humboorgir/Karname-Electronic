@@ -41,4 +41,20 @@ export default async function handler(req, res) {
     });
     return res.status(200).send("OK");
   }
+
+  if (req.method === "PUT") {
+    if (!req.body) return;
+    const { username, name, id } = req.body;
+    await prisma.manager.update({
+      where: {
+        id,
+      },
+      data: {
+        username,
+        name,
+      },
+    });
+
+    return res.status(200).send("OK");
+  }
 }
