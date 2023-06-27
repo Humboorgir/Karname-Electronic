@@ -36,14 +36,12 @@ const Header = () => {
           </div>
           <Account handleSignOut={handleSignOut} />
         </ul>
+
         <ul
-          className="md:hidden flex flex-row justify-center items-center px-[80px] list-none max-w-full top-0 h-[90px]
-        rounded-xl border[0.5px] border-gray-300 text-lg shadow-lg"
+          className="md:hidden flex flex-row justify-between  items-center px-[20px] list-none max-w-full top-0 h-[90px]
+        rounded-xl border-[0.5px] border-gray-300 text-lg shadow-lg"
         >
-          <img
-            src="/logo.svg"
-            className="h-[60px] absolute left-[9%] cursor-pointer"
-          />
+          <img src="/logo.svg" className="h-[60px] cursor-pointer" />
           {/* lost my braincells with this one, spent 30 minutes trying to figure out why handleSignOut is 
           undefined just to realize I was only passing it down as a prop for the desktop version */}
           <Account handleSignOut={handleSignOut}>حساب کاربری</Account>
