@@ -73,14 +73,6 @@ body {
 .shake {
   animation: shake 0.3s;
 }
-.tabHoverAnimation {
-  background-color: none;
-  transition: background-color 0.3s ease;
-}
-.tabHoverAnimation:hover {
-  background-color: rgba(197, 197, 197, 0.246);
-  transition: background-color 0.3s ease;
-}
 .dropdownAnimation {
   animation: dropdownAnimation 0.3s;
 }
