@@ -22,19 +22,19 @@ const Header = () => {
           </div>
           <div className="hidden lg:flex flex-row justify-center items-center absolute left-[50%] translate-x-[-50%]">
             <Li href="/panel/admin">
-              خانه
-              <FaHome className="mb-[2px]" />
+              <FaHome className="mb-[3px]" />
+              Home
             </Li>
-            <Li href="/support">
-              پشتیبانی
-              <FaPhone className="mb-[0px] rotate-[-15deg]" />
+            <Li href="/support" disabled={true}>
+              <FaPhone className="mb-[0px] rotate-[110deg]" />
+              Support
             </Li>
-            <Li href="/guide">
-              راهنما
+            <Li href="/guide" disabled={true}>
               <FaInfoCircle className="mb-[2px]" />
+              Guide
             </Li>
           </div>
-          <Account handleSignOut={handleSignOut}>حساب کاربری</Account>
+          <Account handleSignOut={handleSignOut} />
         </ul>
         <ul
           className="md:hidden flex flex-row justify-center items-center px-[80px] list-none max-w-full top-0 h-[90px]

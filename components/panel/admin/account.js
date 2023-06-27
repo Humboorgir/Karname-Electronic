@@ -12,13 +12,13 @@ const Account = ({ handleSignOut }) => {
   return (
     <div
       onClick={() => setOpen(!open)}
-      className="h-[90px] w-[230px] flex flex-row justify-center items-center gap-3 
+      className="h-[90px] w-[230px] flex flex-row justify-center items-center gap-2 
       cursor-pointer tabHoverAnimation account absolute md:static right-[4%]"
       id="account"
     >
-      <div className="flex flex-col items-end account gap-1">
-        <span className="account leading-5">Admin</span>
-        <p className="text-red-500 text-[14px] account leading-3">نماینده</p>
+      <div className="flex flex-col items-end justify-center account gap-1">
+        <span className="account leading-5">Manager</span>
+        <p className="text-red-500 text-sm account">Manager</p>
       </div>
       <img className="h-[60px] account" src="/defaultTeacher1.svg"></img>
       <FaAngleDown className="h-[20px]" />
