@@ -2,18 +2,11 @@ import DropdownMenu from "./dropdown";
 import { useEffect, useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 const Account = ({ handleSignOut }) => {
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-    window.onclick = (e) => {
-      if (e.target.matches(".account")) return;
-      setOpen(false);
-    };
-  }, []);
   return (
     <div
-      onClick={() => setOpen(!open)}
+      tabIndex={0}
       className="h-[90px] w-[230px] flex flex-row justify-center items-center gap-2 
-      cursor-pointer tabHoverAnimation account absolute md:static right-[4%]"
+      cursor-pointer account relative hover:bg-[#c5c5c53f] dropdown"
       id="account"
     >
       <div className="flex flex-col items-end justify-center account gap-1">
@@ -22,7 +15,7 @@ const Account = ({ handleSignOut }) => {
       </div>
       <img className="h-[60px] account" src="/defaultTeacher1.svg"></img>
       <FaAngleDown className="h-[20px]" />
-      {open && <DropdownMenu handleSignOut={handleSignOut} />}
+      <DropdownMenu handleSignOut={handleSignOut} />
     </div>
   );
 };
