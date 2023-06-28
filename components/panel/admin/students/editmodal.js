@@ -1,12 +1,12 @@
 import { useRef } from "react";
 
-const EditModal = ({ setManagers, managerId }) => {
+const EditModal = ({ setStudents, studentId }) => {
   const modalRef = useRef(null);
 
   return (
     <dialog id="editModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={(e) => handleSubmit(e, setManagers, managerId, modalRef)}
+        onSubmit={(e) => handleSubmit(e, setStudents, studentId, modalRef)}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]"
@@ -55,12 +55,12 @@ const EditModal = ({ setManagers, managerId }) => {
   );
 };
 
-async function handleSubmit(e, setManagers, managerId, modalRef) {
+async function handleSubmit(e, setStudents, studentId, modalRef) {
   e.preventDefault();
   const data = {
     username: e.target.username.value,
     name: e.target.name.value,
-    id: managerId,
+    id: studentId,
   };
   const response = await fetch("/api/students", {
     method: "PUT",
@@ -79,15 +79,15 @@ async function handleSubmit(e, setManagers, managerId, modalRef) {
   }
 
   modalRef.current.close();
-  setManagers((managers) => {
-    const updatedManagers = managers.map((manager) => {
-      if (manager.id === managerId) {
-        return { ...manager, name: data.name };
+  setStudents((students) => {
+    const updatedStudents = students.map((student) => {
+      if (student.id === studentId) {
+        return { ...student, name: data.name };
       } else {
-        return manager;
+        return student;
       }
     });
-    return updatedManagers;
+    return updatedStudents;
   });
 }
 

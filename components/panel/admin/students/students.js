@@ -1,4 +1,4 @@
-import Manager from "@/components/panel/admin/managers/manager";
+import Student from "@/components/panel/admin/students/student";
 
 const Students = ({ students, openModal }) => {
   return (
@@ -6,7 +6,7 @@ const Students = ({ students, openModal }) => {
       {students &&
         students.map(({ id, name, image }) => {
           return (
-            <Manager id={id} name={name} image={image} openModal={openModal} />
+            <Student id={id} name={name} image={image} openModal={openModal} />
           );
         })}
     </>

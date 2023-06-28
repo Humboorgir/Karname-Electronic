@@ -1,13 +1,13 @@
 import { useRef } from "react";
 
-const AddModal = ({ setManagers }) => {
+const AddModal = ({ setStudents }) => {
   const modalRef = useRef(null);
 
   const image = String(Math.floor(Math.random() * 5) + 1);
   return (
     <dialog id="addModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={(e) => handleSubmit(e, setManagers, modalRef)}
+        onSubmit={(e) => handleSubmit(e, setStudents, modalRef)}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]"
@@ -82,10 +82,9 @@ async function handleSubmit(e, setManagers, modalRef) {
 
   const res = await response.json();
 
-  console.log(res);
   modalRef.current.close();
 
-  setManagers((managers) => [...managers, res]);
+  setStudents((students) => [...students, res]);
 }
 
 export default AddModal;
