@@ -51,7 +51,7 @@ async function handleSubmit(e, setTeachers, teacherId, modalRef) {
   const data = {
     id: teacherId,
   };
-  let response = await fetch("/api/students", {
+  let response = await fetch("/api/teachers", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
