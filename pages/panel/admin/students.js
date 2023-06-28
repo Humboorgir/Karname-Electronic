@@ -15,7 +15,7 @@ const StudentsPage = ({ students_ }) => {
 
   const [studentId, setStudentId] = useState(null);
   useEffect(() => {
-    setManagers(students_);
+    setStudents(students_);
   }, []);
 
   function openModal(modal, id) {
