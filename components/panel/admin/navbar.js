@@ -23,15 +23,15 @@ const Header = () => {
           <div className="hidden lg:flex flex-row justify-center items-center absolute left-[50%] translate-x-[-50%]">
             <Li href="/panel/admin">
               <FaHome className="mb-[3px]" />
-              Home
+              خانه
             </Li>
             <Li href="/support" disabled={true}>
               <FaPhone className="mb-[0px] rotate-[110deg]" />
-              Support
+              پشتیبانی
             </Li>
             <Li href="/guide" disabled={true}>
               <FaInfoCircle className="mb-[2px]" />
-              Guide
+              راهنما
             </Li>
           </div>
           <Account handleSignOut={handleSignOut} />
@@ -44,7 +44,7 @@ const Header = () => {
           <img src="/logo.svg" className="h-[60px] cursor-pointer" />
           {/* lost my braincells with this one, spent 30 minutes trying to figure out why handleSignOut is 
           undefined just to realize I was only passing it down as a prop for the desktop version */}
-          <Account handleSignOut={handleSignOut}>حساب کاربری</Account>
+          <Account handleSignOut={handleSignOut} />
         </ul>
       </nav>
     </header>
