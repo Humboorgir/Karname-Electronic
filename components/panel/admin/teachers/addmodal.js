@@ -1,18 +1,18 @@
 import { useRef } from "react";
 
-const AddModal = ({ setStudents }) => {
+const AddModal = ({ setTeachers }) => {
   const modalRef = useRef(null);
 
   const image = String(Math.floor(Math.random() * 5) + 1);
   return (
     <dialog id="addModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={(e) => handleSubmit(e, setStudents, modalRef)}
+        onSubmit={(e) => handleSubmit(e, setTeachers, modalRef)}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]"
       >
-        <h3 className="text-lg mb-3 text-right mr-2">ثبت دانش آموز جدید</h3>
+        <h3 className="text-lg mb-3 text-right mr-2">ثبت دبیر جدید</h3>
         <input
           type="text"
           placeholder="نام و نام خانوادگی"
@@ -33,7 +33,7 @@ const AddModal = ({ setStudents }) => {
             type="submit"
             className="btn bg-blue text-white hover:bg-sky-400"
           >
-            ثبت دانش آموز
+            ثبت دبیر
           </button>
 
           <button
@@ -56,7 +56,7 @@ const AddModal = ({ setStudents }) => {
   );
 };
 
-async function handleSubmit(e, setStudents, modalRef) {
+async function handleSubmit(e, setTeachers, modalRef) {
   e.preventDefault();
   const image = Math.floor(Math.random() * 5) + 1;
   const data = {
@@ -64,7 +64,7 @@ async function handleSubmit(e, setStudents, modalRef) {
     name: e.target.name.value,
     image,
   };
-  const response = await fetch("/api/students", {
+  const response = await fetch("/api/teachers", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -84,7 +84,7 @@ async function handleSubmit(e, setStudents, modalRef) {
 
   modalRef.current.close();
 
-  setStudents((students) => [...students, res]);
+  setTeachers((teachers) => [...teachers, res]);
 }
 
 export default AddModal;

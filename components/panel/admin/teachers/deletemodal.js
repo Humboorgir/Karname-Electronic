@@ -1,12 +1,12 @@
 import { useRef } from "react";
 
-const DeleteModal = ({ setStudents, studentId }) => {
+const DeleteModal = ({ setTeachers, teacherId }) => {
   const modalRef = useRef(null);
 
   return (
     <dialog id="deleteModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={(e) => handleSubmit(e, setStudents, studentId, modalRef)}
+        onSubmit={(e) => handleSubmit(e, setTeachers, teacherId, modalRef)}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]"
@@ -46,11 +46,11 @@ const DeleteModal = ({ setStudents, studentId }) => {
   );
 };
 
-async function handleSubmit(e, setStudents, studentId, modalRef) {
+async function handleSubmit(e, setTeachers, teacherId, modalRef) {
   e.preventDefault();
 
   const data = {
-    id: studentId,
+    id: teacherId,
   };
   let response = await fetch("/api/students", {
     method: "DELETE",
@@ -62,8 +62,8 @@ async function handleSubmit(e, setStudents, studentId, modalRef) {
 
   if (!response.status === 200) return console.log("unsuccessful");
 
-  setStudents((students) =>
-    students.filter((student) => student.id !== studentId)
+  setTeachers((teachers) =>
+    teachers.filter((teacher) => teacher.id !== teacherId)
   );
 
   modalRef.current.close();

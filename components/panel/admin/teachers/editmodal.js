@@ -1,19 +1,17 @@
 import { useRef } from "react";
 
-const EditModal = ({ setStudents, studentId }) => {
+const EditModal = ({ setTeachers, teacherId }) => {
   const modalRef = useRef(null);
 
   return (
     <dialog id="editModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={(e) => handleSubmit(e, setStudents, studentId, modalRef)}
+        onSubmit={(e) => handleSubmit(e, setTeachers, teacherId, modalRef)}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]"
       >
-        <h3 className="text-lg mb-3 text-right ml-2">
-          ویرایش اطلاعات دانش آموز
-        </h3>
+        <h3 className="text-lg mb-3 text-right ml-2">ویرایش اطلاعات دبیر</h3>
 
         <input
           type="text"
@@ -58,12 +56,12 @@ const EditModal = ({ setStudents, studentId }) => {
   );
 };
 
-async function handleSubmit(e, setStudents, studentId, modalRef) {
+async function handleSubmit(e, setTeachers, teacherId, modalRef) {
   e.preventDefault();
   const data = {
     username: e.target.username.value,
     name: e.target.name.value,
-    id: studentId,
+    id: teacherId,
   };
   const response = await fetch("/api/students", {
     method: "PUT",
@@ -82,15 +80,15 @@ async function handleSubmit(e, setStudents, studentId, modalRef) {
   }
 
   modalRef.current.close();
-  setStudents((students) => {
-    const updatedStudents = students.map((student) => {
-      if (student.id === studentId) {
-        return { ...student, name: data.name };
+  setTeachers((teachers) => {
+    const updatedTeachers = teachers.map((teacher) => {
+      if (teacher.id === teacherId) {
+        return { ...teacher, name: data.name };
       } else {
-        return student;
+        return teacher;
       }
     });
-    return updatedStudents;
+    return updatedTeachers;
   });
 }
 
