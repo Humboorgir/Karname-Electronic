@@ -12,19 +12,19 @@ const AddModal = ({ setManagers }) => {
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]"
       >
-        <h3 className="text-lg mb-3">Add a new manager</h3>
+        <h3 className="text-lg mb-3 text-right mr-2">ثبت دانش آموز جدید</h3>
         <input
           type="text"
-          placeholder="Username"
+          placeholder="کد ملی"
           name="username"
-          className="input border border-neutral-400 w-full max-w-xs mb-4"
+          className="input border border-neutral-400 w-full max-w-xs mb-4 placeholder:text-right"
           required
         />
         <input
           type="text"
-          placeholder="Full name"
+          placeholder="نام و نام خانوادگی"
           name="name"
-          className="input border border-neutral-400 w-full max-w-xs"
+          className="input border border-neutral-400 w-full max-w-xs placeholder:text-right"
           required
         />
 
@@ -33,7 +33,7 @@ const AddModal = ({ setManagers }) => {
             type="submit"
             className="btn bg-blue text-white hover:bg-sky-400"
           >
-            Submit
+            ثبت دانش آموز
           </button>
 
           <button
@@ -43,7 +43,7 @@ const AddModal = ({ setManagers }) => {
             }}
             className="btn btn-outline btn-error hover:!text-white text-white"
           >
-            Cancel
+            انصراف
           </button>
         </div>
       </form>
