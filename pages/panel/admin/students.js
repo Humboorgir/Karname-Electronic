@@ -2,11 +2,11 @@ import Head from "@/components/head";
 import Navbar from "@/components/panel/admin/navbar";
 import Footer from "@/components/footer";
 
-import Managers from "@/components/panel/admin/managers/managers";
-import AddManager from "@/components/panel/admin/managers/addmanager";
-import AddModal from "@/components/panel/admin/managers/addmodal";
-import EditModal from "@/components/panel/admin/managers/editmodal";
-import DeleteModal from "@/components/panel/admin/managers/deletemodal";
+import Managers from "@/components/panel/admin/students/managers";
+import AddManager from "@/components/panel/admin/students/addmanager";
+import AddModal from "@/components/panel/admin/students/addmodal";
+import EditModal from "@/components/panel/admin/students/editmodal";
+import DeleteModal from "@/components/panel/admin/students/deletemodal";
 
 import { useState, useEffect } from "react";
 
@@ -36,7 +36,7 @@ const ManagersPage = ({ managers_ }) => {
   }
   return (
     <div className="flex flex-col min-h-[100svh] justify-between gap-5">
-      <Head page="مدیریت نمایندگان" />
+      <Head page="مدیریت دانش آموزان" />
       <Navbar />
 
       {/* the main part of the page */}
@@ -48,10 +48,10 @@ const ManagersPage = ({ managers_ }) => {
         >
           <h1
             key="title"
-            className="flex items-center justify-end bg-red-500 text-white top-0 left-0 
+            className="flex items-center justify-end bg-blue text-white top-0 left-0 
         rounded-t-lg absolute w-[calc(100%+4px)] ml-[-2px] h-[55px] mt-[-2px] px-[5%]"
           >
-            لیست نمایندگان
+            لیست دانش آموزان
           </h1>
           <Managers managers={managers} openModal={openModal} />
           {/* add managers */}
