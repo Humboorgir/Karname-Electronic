@@ -18,7 +18,7 @@ const DeleteModal = ({ setManagers, managerId }) => {
           <br /> This process cannot be undone.
         </p>
 
-        <div className="modal-action">
+        <div className="modal-action mt-4">
           <button
             type="submit"
             className="btn bg-red-500 btn-error hover:!text-white text-white"
