@@ -2,24 +2,24 @@ import Head from "@/components/head";
 import Navbar from "@/components/panel/admin/navbar";
 import Footer from "@/components/footer";
 
-import Managers from "@/components/panel/admin/students/managers";
-import AddManager from "@/components/panel/admin/students/addmanager";
+import Students from "@/components/panel/admin/students/students";
+import AddStudent from "@/components/panel/admin/students/addstudent";
 import AddModal from "@/components/panel/admin/students/addmodal";
 import EditModal from "@/components/panel/admin/students/editmodal";
 import DeleteModal from "@/components/panel/admin/students/deletemodal";
 
 import { useState, useEffect } from "react";
 
-const ManagersPage = ({ managers_ }) => {
-  const [managers, setManagers] = useState([]);
+const StudentsPage = ({ students_ }) => {
+  const [students, setStudents] = useState([]);
 
-  const [managerId, setManagerId] = useState(null);
+  const [studentId, setStudentId] = useState(null);
   useEffect(() => {
-    setManagers(managers_);
+    setManagers(students_);
   }, []);
 
   function openModal(modal, id) {
-    if (id) setManagerId(id);
+    if (id) setStudentId(id);
 
     switch (modal) {
       case "add":
@@ -53,27 +53,27 @@ const ManagersPage = ({ managers_ }) => {
           >
             لیست دانش آموزان
           </h1>
-          <Managers managers={managers} openModal={openModal} />
+          <Students students={students} openModal={openModal} />
           {/* add managers */}
-          <AddManager openModal={openModal} />
+          <AddStudent openModal={openModal} />
         </ul>
       </div>
       <Footer />
 
       {/* modals  */}
-      <AddModal setManagers={setManagers} />
-      <EditModal setManagers={setManagers} managerId={managerId} />
-      <DeleteModal setManagers={setManagers} managerId={managerId} />
+      <AddModal setStudents={setStudents} />
+      <EditModal setStudents={setStudents} studentId={studentId} />
+      <DeleteModal setStudents={setStudents} studentId={studentId} />
     </div>
   );
 };
 export async function getServerSideProps() {
-  let managers = await fetch(`${process.env.NEXTAUTH_URL}/api/managers`, {
+  let students = await fetch(`${process.env.NEXTAUTH_URL}/api/students`, {
     method: "GET",
   });
-  let Managers = await managers.json();
+  let Students = await students.json();
   return {
-    props: { managers_: Managers },
+    props: { students_: Students },
   };
 }
-export default ManagersPage;
+export default StudentsPage;

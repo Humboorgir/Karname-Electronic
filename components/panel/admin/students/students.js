@@ -1,10 +1,10 @@
 import Manager from "@/components/panel/admin/managers/manager";
 
-const Managers = ({ managers, openModal }) => {
+const Students = ({ students, openModal }) => {
   return (
     <>
-      {managers &&
-        managers.map(({ id, name, image }) => {
+      {students &&
+        students.map(({ id, name, image }) => {
           return (
             <Manager id={id} name={name} image={image} openModal={openModal} />
           );
@@ -13,4 +13,4 @@ const Managers = ({ managers, openModal }) => {
   );
 };
 
-export default Managers;
+export default Students;

@@ -1,5 +1,5 @@
 import { FaTrash, FaEdit } from "react-icons/fa";
-const Manager = ({ id, name, image, openModal }) => {
+const Student = ({ id, name, image, openModal }) => {
   return (
     <li
       key={id}
@@ -21,9 +21,9 @@ const Manager = ({ id, name, image, openModal }) => {
         </span>
       </span>
       <span>{name}</span>
-      <img className="h-[40px]" src={`/defaultTeacher${image}.svg`} />
+      <img className="h-[40px]" src={`/defaultStudent${image}.svg`} />
     </li>
   );
 };
 
-export default Manager;
+export default Student;

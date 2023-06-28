@@ -1,8 +1,8 @@
 import { FaPlus } from "react-icons/fa";
-const AddManager = ({ openModal }) => {
+const AddStudent = ({ openModal }) => {
   return (
     <li
-      key="addmanager"
+      key="addstudent"
       className="flex flex-row justify-end items-center gap-6 pb-3 px-5"
     >
       <span className="mr-auto flex flex-row items-center gap-2 hoverCircleAnimation">
@@ -21,4 +21,4 @@ const AddManager = ({ openModal }) => {
   );
 };
 
-export default AddManager;
+export default AddStudent;
