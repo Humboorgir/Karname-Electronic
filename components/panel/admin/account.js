@@ -12,8 +12,6 @@ const Account = ({ handleSignOut }) => {
 
   const { data: session, status } = useSession();
   if (status !== "authenticated") return <div>NOT LOGGED IN</div>;
-  console.log(status);
-  console.log(session.user);
   return (
     <div
       tabIndex={0}
@@ -22,8 +20,10 @@ const Account = ({ handleSignOut }) => {
       id="account"
     >
       <div className="flex flex-col items-end justify-center account gap-1">
-        <span className="account leading-5">{roles[session.user.role]}</span>
-        <p className="text-red-500 text-sm account"></p>
+        <span className="account leading-5">{session.user.name}</span>
+        <p className="text-red-500 text-sm account">
+          {roles[session.user.role]}
+        </p>
       </div>
       <img className="h-[60px] account" src="/defaultTeacher1.svg"></img>
       <FaAngleDown className="h-[20px]" />
