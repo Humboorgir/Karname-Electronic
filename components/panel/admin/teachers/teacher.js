@@ -21,7 +21,7 @@ const Teacher = ({ id, name, image, openModal }) => {
         </span>
       </span>
       <span>{name}</span>
-      <img className="h-[40px]" src={`/defaultStudent${image}.svg`} />
+      <img className="h-[40px]" src={`/defaultTeacher${image}.svg`} />
     </li>
   );
 };
