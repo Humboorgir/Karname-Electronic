@@ -22,11 +22,11 @@ export const authOptions = {
         // these are only valid if there are no admins stored on the database
         let defaultAdmins = [
           {
-            name: "admin",
+            name: "Manager",
             username: "admin",
             password: "admin",
             image: "1",
-            role: "admin",
+            role: "manager",
           },
         ];
 
@@ -49,7 +49,7 @@ export const authOptions = {
             );
         // if the username and password provided matches none, it returns an empty Array which we convert to a null variable.
         if (Array.isArray(user) && !user.length) user = null;
-        if (!user.role) user.role = "admin";
+        if (!user.role) user.role = "manager";
         if (user) {
           console.table(user);
           return user;

@@ -1,7 +1,19 @@
+import { useSession } from "next-auth/react";
+
 import DropdownMenu from "./dropdown";
-import { useEffect, useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
+
 const Account = ({ handleSignOut }) => {
+  const roles = {
+    manager: "نماینده",
+    teacher: "دبیر",
+    student: "دانش آموز",
+  };
+
+  const { data: session, status } = useSession();
+  if (status !== "authenticated") return <div>NOT LOGGED IN</div>;
+  console.log(status);
+  console.log(session.user);
   return (
     <div
       tabIndex={0}
@@ -10,8 +22,8 @@ const Account = ({ handleSignOut }) => {
       id="account"
     >
       <div className="flex flex-col items-end justify-center account gap-1">
-        <span className="account leading-5">انسان انسانی</span>
-        <p className="text-red-500 text-sm account">نماینده</p>
+        <span className="account leading-5">{roles[session.user.role]}</span>
+        <p className="text-red-500 text-sm account"></p>
       </div>
       <img className="h-[60px] account" src="/defaultTeacher1.svg"></img>
       <FaAngleDown className="h-[20px]" />
