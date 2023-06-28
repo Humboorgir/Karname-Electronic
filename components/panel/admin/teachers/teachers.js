@@ -6,7 +6,7 @@ const Teachers = ({ teachers, openModal }) => {
       {teachers &&
         teachers.map(({ id, name, image }) => {
           return (
-            <Student id={id} name={name} image={image} openModal={openModal} />
+            <Teacher id={id} name={name} image={image} openModal={openModal} />
           );
         })}
     </>
