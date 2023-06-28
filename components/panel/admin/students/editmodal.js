@@ -14,18 +14,19 @@ const EditModal = ({ setStudents, studentId }) => {
         <h3 className="text-lg mb-3 text-right ml-2">
           ویرایش اطلاعات دانش آموز
         </h3>
+
         <input
           type="text"
-          placeholder="Username"
-          name="username"
-          className="input border border-neutral-400 w-full max-w-xs mb-4"
+          placeholder="نام و نام خانوادگی"
+          name="name"
+          className="input border border-neutral-400 w-full max-w-xs mb-4 placeholder:text-right"
           required
         />
         <input
           type="text"
-          placeholder="Full name"
-          name="name"
-          className="input border border-neutral-400 w-full max-w-xs"
+          placeholder="کد ملی"
+          name="username"
+          className="input border border-neutral-400 w-full max-w-xs placeholder:text-right"
           required
         />
 
@@ -34,7 +35,7 @@ const EditModal = ({ setStudents, studentId }) => {
             type="submit"
             className="btn bg-blue text-white hover:bg-sky-400"
           >
-            Submit
+            ویرایش اطلاعات
           </button>
           {/* if there is a button in form, it will close the modal */}
           <button
@@ -44,7 +45,7 @@ const EditModal = ({ setStudents, studentId }) => {
             }}
             className="btn btn-outline btn-error hover:!text-white text-white"
           >
-            Cancel
+            انصراف
           </button>
         </div>
       </form>
