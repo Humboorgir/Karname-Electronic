@@ -35,11 +35,15 @@ const EditModal = ({ setManagers, managerId }) => {
             Submit
           </button>
           {/* if there is a button in form, it will close the modal */}
-          <form method="dialog">
-            <button className="btn btn-outline btn-error hover:!text-white text-white">
-              Cancel
-            </button>
-          </form>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              modalRef.current.close();
+            }}
+            className="btn btn-outline btn-error hover:!text-white text-white"
+          >
+            Cancel
+          </button>
         </div>
       </form>
 

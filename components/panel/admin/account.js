@@ -6,7 +6,7 @@ const Account = ({ handleSignOut }) => {
     <div
       tabIndex={0}
       className="h-[90px] w-[230px] flex flex-row justify-center items-center gap-2 
-      cursor-pointer account relative hover:bg-[#c5c5c53f] dropdown"
+      cursor-pointer account relative hover:bg-[rgba(197,197,197,0.25)] dropdown"
       id="account"
     >
       <div className="flex flex-col items-end justify-center account gap-1">

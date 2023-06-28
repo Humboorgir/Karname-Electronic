@@ -26,9 +26,15 @@ const DeleteModal = ({ setManagers, managerId }) => {
             Confirm
           </button>
           {/* if there is a button in form, it will close the modal */}
-          <form method="dialog">
-            <button className="btn btn-outline btn-neutral">Cancel</button>
-          </form>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              modalRef.current.close();
+            }}
+            className="btn btn-outline btn-neutral"
+          >
+            Cancel
+          </button>
         </div>
       </form>
 
