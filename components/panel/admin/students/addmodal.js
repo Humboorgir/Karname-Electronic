@@ -17,14 +17,14 @@ const AddModal = ({ setStudents }) => {
           type="text"
           placeholder="نام و نام خانوادگی"
           name="name"
-          className="input border border-neutral-400 w-full max-w-xs placeholder:text-right"
+          className="input border border-neutral-400 w-full max-w-xs placeholder:text-right mb-4"
           required
         />
         <input
           type="text"
           placeholder="کد ملی"
           name="username"
-          className="input border border-neutral-400 w-full max-w-xs mb-4 placeholder:text-right"
+          className="input border border-neutral-400 w-full max-w-xs placeholder:text-right"
           required
         />
 
