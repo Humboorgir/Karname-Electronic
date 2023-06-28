@@ -15,16 +15,16 @@ const AddModal = ({ setStudents }) => {
         <h3 className="text-lg mb-3 text-right mr-2">ثبت دانش آموز جدید</h3>
         <input
           type="text"
-          placeholder="کد ملی"
-          name="username"
-          className="input border border-neutral-400 w-full max-w-xs mb-4 placeholder:text-right"
+          placeholder="نام و نام خانوادگی"
+          name="name"
+          className="input border border-neutral-400 w-full max-w-xs placeholder:text-right"
           required
         />
         <input
           type="text"
-          placeholder="نام و نام خانوادگی"
-          name="name"
-          className="input border border-neutral-400 w-full max-w-xs placeholder:text-right"
+          placeholder="کد ملی"
+          name="username"
+          className="input border border-neutral-400 w-full max-w-xs mb-4 placeholder:text-right"
           required
         />
 
