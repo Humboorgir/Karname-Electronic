@@ -58,7 +58,7 @@ const AddModal = ({ setStudents }) => {
 
 async function handleSubmit(e, setStudents, modalRef) {
   e.preventDefault();
-  const image = Math.floor(Math.random() * 5) + 1;
+  const image = Math.floor(Math.random() * 7) + 1;
   const data = {
     username: e.target.username.value,
     name: e.target.name.value,
