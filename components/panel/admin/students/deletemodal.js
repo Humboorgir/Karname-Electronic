@@ -11,11 +11,11 @@ const DeleteModal = ({ setManagers, managerId }) => {
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]"
       >
-        <h3 className="bold text-xl text-center ">Are you sure?</h3>
+        <h3 className="bold text-xl text-center ">آیا مطمئن هستید؟</h3>
         <p className="pt-3 px-3 text-center">
-          By removing a manager from the system, all of their data will be
-          deleted.
-          <br /> This process cannot be undone.
+          با حذف یک دانش آموز از سیستم, تمام اطلاعات آنها برای همیشه از بین
+          خواهد رفت
+          <br /> این فرآیند قابل بازگشت نیست.
         </p>
 
         <div className="modal-action mt-4">
@@ -23,7 +23,7 @@ const DeleteModal = ({ setManagers, managerId }) => {
             type="submit"
             className="btn bg-red-500 btn-error hover:!text-white text-white"
           >
-            Confirm
+            تایید و حذف دانش آموز
           </button>
           {/* if there is a button in form, it will close the modal */}
           <button
@@ -33,7 +33,7 @@ const DeleteModal = ({ setManagers, managerId }) => {
             }}
             className="btn btn-outline btn-neutral"
           >
-            Cancel
+            انصراف
           </button>
         </div>
       </form>
