@@ -15,7 +15,7 @@ const DeleteModal = ({ setStudents, studentId }) => {
         <p className="pt-3 px-3 text-center">
           با حذف یک دانش آموز از سیستم, تمام اطلاعات آنها برای همیشه از بین
           خواهد رفت
-          <br /> این فرآیند قابل بازگشت نیست.
+          <br /> این فرآیند قابل بازگشت نیست
         </p>
 
         <div className="modal-action mt-4">
