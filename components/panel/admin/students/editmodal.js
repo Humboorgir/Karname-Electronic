@@ -62,7 +62,7 @@ async function handleSubmit(e, setManagers, managerId, modalRef) {
     name: e.target.name.value,
     id: managerId,
   };
-  const response = await fetch("/api/managers", {
+  const response = await fetch("/api/students", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
