@@ -11,7 +11,9 @@ const EditModal = ({ setStudents, studentId }) => {
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]"
       >
-        <h3 className="text-lg mb-3">Edit a manager's information</h3>
+        <h3 className="text-lg mb-3 text-right ml-2">
+          ویرایش اطلاعات دانش آموز
+        </h3>
         <input
           type="text"
           placeholder="Username"

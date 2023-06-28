@@ -11,8 +11,8 @@ const DeleteModal = ({ setStudents, studentId }) => {
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]"
       >
-        <h3 className="bold text-xl text-center ">آیا مطمئن هستید؟</h3>
-        <p className="pt-3 px-3 text-center">
+        <h3 className="bold text-xl text-right mr-4 ">آیا مطمئن هستید؟</h3>
+        <p className="pt-3 px-3 text-right">
           با حذف یک دانش آموز از سیستم, تمام اطلاعات آنها برای همیشه از بین
           خواهد رفت
           <br /> این فرآیند قابل بازگشت نیست
