@@ -2,24 +2,24 @@ import Head from "@/components/head";
 import Navbar from "@/components/panel/admin/navbar";
 import Footer from "@/components/footer";
 
-import Students from "@/components/panel/admin/students/students";
-import AddStudent from "@/components/panel/admin/students/addstudent";
-import AddModal from "@/components/panel/admin/students/addmodal";
-import EditModal from "@/components/panel/admin/students/editmodal";
-import DeleteModal from "@/components/panel/admin/students/deletemodal";
+import Teachers from "@/components/panel/admin/teachers/teachers";
+import AddTeacher from "@/components/panel/admin/teachers/addteacher";
+import AddModal from "@/components/panel/admin/teachers/addmodal";
+import EditModal from "@/components/panel/admin/teachers/editmodal";
+import DeleteModal from "@/components/panel/admin/teachers/deletemodal";
 
 import { useState, useEffect } from "react";
 
-const StudentsPage = ({ students_ }) => {
-  const [students, setStudents] = useState([]);
+const TeachersPage = ({ teachers_ }) => {
+  const [teachers, setTeachers] = useState([]);
 
-  const [studentId, setStudentId] = useState(null);
+  const [teacherId, setTeacherId] = useState(null);
   useEffect(() => {
-    setStudents(students_);
+    setTeachers(teachers_);
   }, []);
 
   function openModal(modal, id) {
-    if (id) setStudentId(id);
+    if (id) setTeacherId(id);
 
     switch (modal) {
       case "add":
@@ -36,7 +36,7 @@ const StudentsPage = ({ students_ }) => {
   }
   return (
     <div className="flex flex-col min-h-[100svh] justify-between gap-5">
-      <Head page="مدیریت دانش آموزان" />
+      <Head page="مدیریت دبیران " />
       <Navbar />
 
       {/* the main part of the page */}
@@ -51,29 +51,29 @@ const StudentsPage = ({ students_ }) => {
             className="flex items-center justify-end bg-blue text-white top-0 left-0 
         rounded-t-lg absolute w-[calc(100%+4px)] ml-[-2px] h-[55px] mt-[-2px] px-[5%]"
           >
-            لیست دانش آموزان
+            لیست دبیران
           </h1>
-          <Students students={students} openModal={openModal} />
+          <Teachers teachers={teachers} openModal={openModal} />
           {/* add managers */}
-          <AddStudent openModal={openModal} />
+          <AddTeacher openModal={openModal} />
         </ul>
       </div>
       <Footer />
 
       {/* modals  */}
-      <AddModal setStudents={setStudents} />
-      <EditModal setStudents={setStudents} studentId={studentId} />
-      <DeleteModal setStudents={setStudents} studentId={studentId} />
+      <AddModal setTeachers={setTeachers} />
+      <EditModal setTeachers={setTeachers} teacherId={teacherId} />
+      <DeleteModal setTeachers={setTeachers} teacherId={teacherId} />
     </div>
   );
 };
 export async function getServerSideProps() {
-  let students = await fetch(`${process.env.NEXTAUTH_URL}/api/students`, {
+  let teachers = await fetch(`${process.env.NEXTAUTH_URL}/api/teachers`, {
     method: "GET",
   });
-  let Students = await students.json();
+  let Teachers = await teachers.json();
   return {
-    props: { students_: Students },
+    props: { teachers_: Teachers },
   };
 }
-export default StudentsPage;
+export default TeachersPage;
