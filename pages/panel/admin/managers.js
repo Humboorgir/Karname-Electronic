@@ -36,7 +36,7 @@ const ManagersPage = ({ managers_ }) => {
   }
   return (
     <div className="flex flex-col min-h-[100svh] justify-between gap-5">
-      <Head page="Manage managers" />
+      <Head page="مدیریت نمایندگان" />
       <Navbar />
 
       {/* the main part of the page */}
@@ -51,7 +51,7 @@ const ManagersPage = ({ managers_ }) => {
             className="flex items-center justify-end bg-red-500 text-white top-0 left-0 
         rounded-t-lg absolute w-[calc(100%+4px)] ml-[-2px] h-[55px] mt-[-2px] px-[5%]"
           >
-            Managers
+            لیست نمایندگان
           </h1>
           <Managers managers={managers} openModal={openModal} />
           {/* add managers */}
