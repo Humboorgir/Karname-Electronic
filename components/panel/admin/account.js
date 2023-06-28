@@ -25,7 +25,10 @@ const Account = ({ handleSignOut }) => {
           {roles[session.user.role]}
         </p>
       </div>
-      <img className="h-[60px] account" src="/defaultTeacher1.svg"></img>
+      <img
+        className="h-[60px] account"
+        src={`/defaultTeacher${session.user.image}.svg`}
+      ></img>
       <FaAngleDown className="h-[20px]" />
       <DropdownMenu handleSignOut={handleSignOut} />
     </div>
