@@ -13,8 +13,7 @@ const DeleteModal = ({ setTeachers, teacherId }) => {
       >
         <h3 className="bold text-xl text-right mr-4 ">آیا مطمئن هستید؟</h3>
         <p className="pt-3 px-3 text-right">
-          با حذف یک دانش آموز از سیستم, تمام اطلاعات آنها برای همیشه از بین
-          خواهد رفت
+          با حذف یک دبیر از سیستم, تمام اطلاعات آنها برای همیشه از بین خواهد رفت
           <br /> این فرآیند قابل بازگشت نیست
         </p>
 
@@ -23,7 +22,7 @@ const DeleteModal = ({ setTeachers, teacherId }) => {
             type="submit"
             className="btn bg-red-500 btn-error hover:!text-white text-white"
           >
-            تایید و حذف دانش آموز
+            تایید و حذف دبیر
           </button>
           {/* if there is a button in form, it will close the modal */}
           <button
