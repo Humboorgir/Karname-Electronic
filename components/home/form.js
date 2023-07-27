@@ -29,6 +29,8 @@ const Form = ({ setError }) => {
     e.preventDefault();
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
+    let userType = document.getElementById("userType").value;
+    return console.log(userType);
     signIn("credentials", {
       username,
       password,
@@ -77,16 +79,19 @@ const Form = ({ setError }) => {
           name="password"
           id="password"
           placeholder="رمز عبور"
-          className="border-b-[1px] border-gray-500 px-2 py-2 focus:outline-none z-10"
+          className="border-b border-gray-500 px-2 py-2 focus:outline-none z-10"
         />
         <i className="relative" />
       </div>
 
-      <div className="flex flex-col inputAnimationField gap-2 -mt-2">
+      <div className="flex flex-col inputAnimationField -mt-2">
         <label htmlFor="username" className="text-lg z-10 mb-[5px]">
           نوع کاربر
         </label>
-        <select class="z-10 select border border-neutral-400 w-full max-w-xs">
+        <select
+          id="userType"
+          class="z-10 select border-0 border-b border-b-gray-500 w-full max-w-xs 
+          rounded-none focus:outline-none px-2">
           <option>دانش آموز</option>
           <option>دبیر</option>
           <option>نماینده</option>
