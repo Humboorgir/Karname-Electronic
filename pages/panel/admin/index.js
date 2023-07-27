@@ -11,14 +11,13 @@ const admin = () => {
         <Head page="درگاه مدیریت" />
         <div
           className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-blue
-        flex items-center gap-3 text-xl"
-        >
+        flex items-center gap-3 text-xl">
           <span className="loading loading-lg loading-spinner mb-1.5" /> Loading
         </div>
       </>
     );
 
-  if (status === "unauthenticated" || session.user.role !== "manager")
+  if (status === "unauthenticated" || session.user.position !== "manager")
     return (
       <>
         <Head page="admin protected page" />
