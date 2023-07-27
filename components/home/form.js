@@ -1,6 +1,7 @@
 import { signIn } from "next-auth/react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { button } from "daisyui";
 
 import Image from "next/image";
 
@@ -52,8 +53,9 @@ const Form = ({ setError }) => {
         <Image className="z-10" width={30} height={30} src="/logo.svg" alt="Logo"></Image>
         <h1 className="bold text-white text-xl z-10">ورود کاربر</h1>
       </div>
-      <div className="flex flex-col inputAnimationField">
-        <label htmlFor="username" className="text-lg z-10 mb-[5px] mt-2">
+
+      <div className="flex flex-col inputAnimationField mt-4">
+        <label htmlFor="username" className="text-lg z-10 mb-[5px]">
           نام کاربری
         </label>
         <input
@@ -65,6 +67,7 @@ const Form = ({ setError }) => {
         />
         <i className="relative" />
       </div>
+
       <div className="flex flex-col inputAnimationField">
         <label htmlFor="password" className="text-lg z-10 mb-[5px]">
           رمز عبور
@@ -78,6 +81,18 @@ const Form = ({ setError }) => {
         />
         <i className="relative" />
       </div>
+
+      <div className="flex flex-col inputAnimationField gap-2 -mt-2">
+        <label htmlFor="username" className="text-lg z-10 mb-[5px]">
+          نوع کاربر
+        </label>
+        <select class="z-10 select border border-neutral-400 w-full max-w-xs">
+          <option>دانش آموز</option>
+          <option>دبیر</option>
+          <option>نماینده</option>
+        </select>
+      </div>
+
       <button
         onClick={handleSubmit}
         type="submit"
