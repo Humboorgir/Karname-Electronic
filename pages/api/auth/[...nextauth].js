@@ -15,9 +15,10 @@ export const authOptions = {
       type: "credentials",
 
       async authorize(credentials, req) {
-        // get the provided username and password
-        const { username, password } = credentials;
-
+        // get the provided username, password and position
+        const { username, password, position } = credentials;
+        let user;
+        let storedUsers;
         // defining the default admins
         // these are only valid if there are no admins stored on the database
         let defaultAdmins = [
@@ -26,30 +27,46 @@ export const authOptions = {
             username: "admin",
             password: "admin",
             image: "1",
-            role: "manager",
+            position: "manager",
           },
         ];
 
-        // then, check to see if any managers are stored in the database.
-        let storedManagers = await prisma.manager.findMany();
-        // if yes, look for someone with the provided information in the database,
-        // if not, use the default 'admin' username and password.
-        let user = storedManagers.length
-          ? // if yes, the user object equals to:
-            await prisma.manager.findFirst({
-              where: {
-                username: username,
-                password: password,
-              },
-            })
-          : // if not, the user object equals to:
-            defaultAdmins.find(
-              (admin) =>
-                admin.username === username && admin.password === password
-            );
+        // then, check to see if any users with that position are stored in the database.
+        if (position == "نماینده") {
+          //  check to see if any managers are stored in the database.
+          let storedManagers = await prisma.manager.findMany();
+          // if yes, look for someone with the provided information in the database,
+          // if not, use the default 'admin' username and password.
+          user = storedManagers.length
+            ? // if yes, the user object equals to:
+              await prisma.manager.findFirst({
+                where: {
+                  username: username,
+                  password: password,
+                },
+              })
+            : // if not, the user object equals to:
+              defaultAdmins.find((admin) => admin.username === username && admin.password === password);
+        }
+        if (position == "دانش آموز") {
+          user = await prisma.student.findFirst({
+            where: {
+              username: username,
+              password: password,
+            },
+          });
+        }
+        if (position == "دبیر") {
+          user = await prisma.teacher.findFirst({
+            where: {
+              username: username,
+              password: password,
+            },
+          });
+        }
+
         // if the username and password provided matches none, it returns an empty Array which we convert to a null variable.
         if (Array.isArray(user) && !user.length) user = null;
-        if (!user.role) user.role = "manager";
         if (user) {
           console.table(user);
           return user;
@@ -63,7 +80,7 @@ export const authOptions = {
     session({ token, session }) {
       if (token) {
         session.user.name = token.name;
-        session.user.role = token.role;
+        session.user.position = token.position;
         session.user.image = token.image;
       }
 
@@ -74,7 +91,7 @@ export const authOptions = {
 
       return {
         name: user.name,
-        role: user.role,
+        position: user.position,
         image: user.image,
       };
     },

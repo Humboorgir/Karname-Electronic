@@ -39,7 +39,7 @@ const Form = ({ setError }) => {
       if (ok) {
         router.push("/panel/admin");
       } else {
-        router.push(`/login/admin?error=${error}`);
+        router.push(`/?error=${error}`);
       }
     });
   }
