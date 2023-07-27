@@ -17,7 +17,7 @@ const admin = () => {
       </>
     );
 
-  if (status === "unauthenticated" || session.user.position !== "manager")
+  if (status === "unauthenticated" || session.user.position !== "نماینده")
     return (
       <>
         <Head page="admin protected page" />

@@ -69,7 +69,7 @@ export const authOptions = {
         if (Array.isArray(user) && !user.length) user = null;
         if (user) {
           console.table(user);
-          return user;
+          return { ...user, position };
         } else {
           throw new Error("کاربر پیدا نشد");
         }
@@ -79,6 +79,7 @@ export const authOptions = {
   callbacks: {
     session({ token, session }) {
       if (token) {
+        console.log(token.position);
         session.user.name = token.name;
         session.user.position = token.position;
         session.user.image = token.image;
@@ -88,7 +89,7 @@ export const authOptions = {
     },
     jwt({ token, user }) {
       if (!user) return token;
-
+      console.log(user.position);
       return {
         name: user.name,
         position: user.position,
