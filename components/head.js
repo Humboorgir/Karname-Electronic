@@ -1,6 +1,6 @@
 import Head from "next/head";
 const HeadComponent = ({ page }) => {
-  let title = `Electroport ~ ${page}`;
+  let title = `Karname electronic ~ ${page}`;
   return (
     <Head>
       <meta charSet="UTF-8" />

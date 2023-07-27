@@ -1,16 +1,25 @@
 import Head from "@/components/head";
-import Header from "@/components/home/header";
-import Hero from "@/components/home/hero";
+import Header from "@/components/login/admin/header";
+import Error from "@/components/login/admin/error";
+import Form from "@/components/login/admin/form";
 import Footer from "@/components/footer";
-const Home = () => {
+
+import { useEffect, useState } from "react";
+const Admin = () => {
+  const [error, setError] = useState({
+    display: false,
+    title: null,
+    text: null,
+  });
   return (
-    <div className="flex flex-col min-h-[100svh] justify-between">
-      <Head page="خانه"></Head>
+    <div className="flex flex-col min-h-[100svh] justify-between gap-5">
+      <Head page="ورود نماینده" />
       <Header />
-      <Hero />
+      {error.display && <Error error={error} setError={setError} />}
+      <Form setError={setError} />
       <Footer />
     </div>
   );
 };
 
-export default Home;
+export default Admin;
