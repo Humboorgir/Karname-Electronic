@@ -10,7 +10,7 @@ const Admin = () => {
     text: null,
   });
   return (
-    <div className="flex items-center justify-ceter min-h-[100svh]">
+    <div className="flex items-center justify-center min-h-[100svh] min-w-[100vw]">
       <Head page="ورود" />
       {error.display && <Error error={error} setError={setError} />}
       <Form setError={setError} />
