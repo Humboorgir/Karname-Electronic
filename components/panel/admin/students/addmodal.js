@@ -3,15 +3,13 @@ import { useRef } from "react";
 const AddModal = ({ setStudents }) => {
   const modalRef = useRef(null);
 
-  const image = String(Math.floor(Math.random() * 5) + 1);
   return (
     <dialog id="addModal" className="modal" ref={modalRef}>
       <form
         onSubmit={(e) => handleSubmit(e, setStudents, modalRef)}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
-        className="modal-box flex flex-col w-[min(350px,98vw)]"
-      >
+        className="modal-box flex flex-col w-[min(350px,98vw)]">
         <h3 className="text-lg mb-3 text-right mr-2">ثبت دانش آموز جدید</h3>
         <input
           type="text"
@@ -29,10 +27,7 @@ const AddModal = ({ setStudents }) => {
         />
 
         <div className="modal-action">
-          <button
-            type="submit"
-            className="btn bg-blue text-white hover:bg-sky-400"
-          >
+          <button type="submit" className="btn bg-blue text-white hover:bg-sky-400">
             ثبت دانش آموز
           </button>
 
@@ -41,8 +36,7 @@ const AddModal = ({ setStudents }) => {
               e.preventDefault();
               modalRef.current.close();
             }}
-            className="btn btn-outline btn-error hover:!text-white text-white"
-          >
+            className="btn btn-outline btn-error hover:!text-white text-white">
             انصراف
           </button>
         </div>
