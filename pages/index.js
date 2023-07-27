@@ -1,10 +1,8 @@
 import Head from "@/components/head";
-import Header from "@/components/login/admin/header";
-import Error from "@/components/login/admin/error";
-import Form from "@/components/login/admin/form";
-import Footer from "@/components/footer";
+import Error from "@/components/home/error";
+import Form from "@/components/home/form";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 const Admin = () => {
   const [error, setError] = useState({
     display: false,
@@ -12,12 +10,10 @@ const Admin = () => {
     text: null,
   });
   return (
-    <div className="flex flex-col min-h-[100svh] justify-between gap-5">
-      <Head page="ورود نماینده" />
-      <Header />
+    <div className="flex items-center justify-ceter min-h-[100svh]">
+      <Head page="ورود" />
       {error.display && <Error error={error} setError={setError} />}
       <Form setError={setError} />
-      <Footer />
     </div>
   );
 };
