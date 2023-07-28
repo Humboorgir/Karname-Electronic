@@ -37,7 +37,12 @@ const Form = ({ setError }) => {
       redirect: false,
     }).then(({ ok, error }) => {
       if (ok) {
-        router.push("/panel/admin");
+        const panels = {
+          نماینده: "admin",
+          دبیر: "teacher",
+          "دانش آموز": "student",
+        };
+        router.push(`/panel/${panels[position]}`);
       } else {
         router.push(`/?error=${error}`);
       }
