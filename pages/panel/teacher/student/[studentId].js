@@ -14,6 +14,7 @@ const Student = () => {
         <div className="flex flex-col items-center">
           <h1 className="text-2xl mb-1">{router.query.studentId}</h1>
           <p className="text-sm text-slate-700">برای ثبت نمره دانش آموز یکی از دروس زیر را انتخاب کنید.</p>
+          <Lessons />
         </div>
         <Footer />
       </div>
