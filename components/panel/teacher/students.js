@@ -4,8 +4,8 @@ const Panel = ({ students }) => {
   return (
     <>
       {students &&
-        students.map(({ name, image }) => {
-          return <Student name={name} image={image} />;
+        students.map(({ id, name, image }) => {
+          return <Student id={id} name={name} image={image} />;
         })}
     </>
   );
