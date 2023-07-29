@@ -20,6 +20,26 @@ const Student = () => {
       title: "فارسی",
       url: "/farsi",
     },
+    {
+      title: "هنز",
+      url: "/farsi",
+    },
+    {
+      title: "قرآن",
+      url: "/farsi",
+    },
+    {
+      title: "زبان",
+      url: "/farsi",
+    },
+    {
+      title: "عربی",
+      url: "/farsi",
+    },
+    {
+      title: "ورزش",
+      url: "/farsi",
+    },
   ];
   return (
     <div className="flex flex-col min-h-[100svh]">
