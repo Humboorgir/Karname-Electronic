@@ -1,6 +1,6 @@
 import Head from "@/components/head";
 import Header from "@/components/panel/teacher/navbar";
-import Panel from "@/components/panel/teacher/panel";
+import Students from "@/components/panel/teacher/students";
 import Footer from "@/components/footer";
 import { useSession, getSession } from "next-auth/react";
 const admin = ({ students }) => {
@@ -30,7 +30,20 @@ const admin = ({ students }) => {
     <div className="flex flex-col min-h-[100svh] justify-between">
       <Head page="درگاه مدیریت" />
       <Header />
-      <Panel students={students} />
+      <div className="flex flex-col justify-center items-center h-max">
+        {/* The list containing managers' data */}
+        <ul
+          className="shadow-xl px-3 pb-2 pt-[70px] w-[min(500px,95vw)] h-max rounded-lg border-2 border-neutral-300
+      flex flex-col gap-3 relative">
+          <h1
+            key="title"
+            className="flex items-center justify-end bg-blue text-white top-0 left-0 
+        rounded-t-lg absolute w-[calc(100%+4px)] ml-[-2px] h-[55px] mt-[-2px] px-[5%]">
+            لیست دانش آموزان
+          </h1>
+          <Students students={students} />
+        </ul>
+      </div>
       <Footer />
     </div>
   );
