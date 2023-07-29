@@ -3,7 +3,7 @@ import Header from "@/components/panel/teacher/navbar";
 import Panel from "@/components/panel/teacher/panel";
 import Footer from "@/components/footer";
 import { useSession, getSession } from "next-auth/react";
-const admin = () => {
+const admin = ({ students }) => {
   const { data: session, status } = useSession();
   if (status === "loading")
     return (
@@ -30,10 +30,20 @@ const admin = () => {
     <div className="flex flex-col min-h-[100svh] justify-between">
       <Head page="درگاه مدیریت" />
       <Header />
-      <Panel />
+      <Panel students={students} />
       <Footer />
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  let students = await fetch(`${process.env.NEXTAUTH_URL}/api/students`, {
+    method: "GET",
+  });
+  let Students = await students.json();
+  return {
+    props: { students: Students },
+  };
+}
 
 export default admin;
