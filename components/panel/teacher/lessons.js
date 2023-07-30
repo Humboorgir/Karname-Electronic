@@ -1,4 +1,4 @@
-import Lesson from "@/components/panel/teacher/student/lesson";
+import Lesson from "@/components/panel/teacher/lesson";
 
 const Lessons = ({ lessons }) => {
   return (
