@@ -2,8 +2,15 @@ import Head from "@/components/head";
 import Header from "@/components/panel/teacher/navbar";
 import Students from "@/components/panel/teacher/students";
 import Footer from "@/components/footer";
+
 import { useSession, getSession } from "next-auth/react";
-const Student = ({ students }) => {
+import { useRouter } from "next/router";
+
+const Student = ({ student }) => {
+  console.log(student);
+  const router = useRouter();
+  const { studentId } = router;
+
   const { data: session, status } = useSession();
   if (status === "loading")
     return (
@@ -27,35 +34,26 @@ const Student = ({ students }) => {
       </>
     );
   return (
-    <div className="flex flex-col min-h-[100svh] justify-center">
+    <div className="flex flex-col min-h-[100svh] gap-12">
       <Head page="درگاه مدیریت" />
       <Header />
       <div className="flex flex-col justify-center items-center h-max">
+        <h1>ویرایش نمرات </h1>
         {/* The list containing managers' data */}
-        <ul
-          className="shadow-xl px-3 pb-2 pt-[70px] w-[min(500px,95vw)] h-max rounded-lg border-2 border-neutral-300
-      flex flex-col gap-3 relative">
-          <h1
-            key="title"
-            className="flex items-center justify-end bg-blue text-white top-0 left-0 
-        rounded-t-lg absolute w-[calc(100%+4px)] ml-[-2px] h-[55px] mt-[-2px] px-[5%]">
-            لیست دانش آموزان
-          </h1>
-          <Students students={students} />
-        </ul>
+        <span>{student.name}</span>
       </div>
-      <Footer />
+      <Footer className="mt-auto" />
     </div>
   );
 };
 
-export async function getServerSideProps() {
-  let students = await fetch(`${process.env.NEXTAUTH_URL}/api/students`, {
+export async function getServerSideProps(context) {
+  let student = await fetch(`${process.env.NEXTAUTH_URL}/api/student/${context.query.studentId}`, {
     method: "GET",
   });
-  let Students = await students.json();
+  student = await student.json();
   return {
-    props: { students: Students },
+    props: { student },
   };
 }
 
