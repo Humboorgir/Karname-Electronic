@@ -4,30 +4,39 @@ import Lessons from "@/components/panel/teacher/lessons";
 import Footer from "@/components/footer";
 
 const Student = () => {
+  const basePath = "/panel/teacher/lesson";
   const lessons = [
     {
       title: "علوم",
+      url: `${basePath}/oloom`,
     },
     {
       title: "ریاضی",
+      url: `${basePath}/riazi`,
     },
     {
       title: "فارسی",
+      url: `${basePath}/farsi`,
     },
     {
       title: "هنز",
+      url: `${basePath}/honar`,
     },
     {
       title: "قرآن",
+      url: `${basePath}/quran`,
     },
     {
       title: "زبان",
+      url: `${basePath}/zaban`,
     },
     {
       title: "عربی",
+      url: `${basePath}/arabi`,
     },
     {
       title: "ورزش",
+      url: `${basePath}/varzesh`,
     },
   ];
   return (
