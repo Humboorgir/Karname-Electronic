@@ -5,8 +5,8 @@ const StudentPicture = ({ student }) => {
     <Image
       className="col-start-1 col-end-1"
       src={`/defaultStudent${student.image}.svg`}
-      height={120}
-      width={120}
+      height={140}
+      width={140}
       alt={student.name}
     />
   );
