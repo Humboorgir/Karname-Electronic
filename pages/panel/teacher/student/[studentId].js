@@ -1,17 +1,15 @@
 import Head from "@/components/head";
-import Header from "@/components/panel/teacher/navbar";
-import Students from "@/components/panel/teacher/students";
+import Navbar from "@/components/panel/teacher/navbar";
+import Title from "@/components/panel/teacher/student/title";
+import Description from "@/components/panel/teacher/student/description";
+import KarnameButton from "@/components/panel/teacher/student/karnamebutton";
+import StudentPicture from "@/components/panel/teacher/student/studentpicture";
 import Footer from "@/components/footer";
-
-import { useSession, getSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 const Student = ({ student }) => {
-  console.log(student);
-  const router = useRouter();
-  const { studentId } = router;
-
   const { data: session, status } = useSession();
+
   if (status === "loading")
     return (
       <>
@@ -34,14 +32,21 @@ const Student = ({ student }) => {
       </>
     );
   return (
-    <div className="flex flex-col min-h-[100svh] gap-12">
+    <div className="flex flex-col min-h-[100svh] gap-16">
       <Head page="درگاه مدیریت" />
-      <Header />
-      <div className="flex flex-col justify-center items-center h-max">
-        <h1>ویرایش نمرات </h1>
-        {/* The list containing managers' data */}
-        <span>{student.name}</span>
+      <Navbar />
+
+      {/* hero */}
+      <div className="flex items-center justify-center h-max gap-4 relative">
+        <StudentPicture student={student} />
+        <div>
+          <Title student={student} />
+          <Description />
+          <KarnameButton />
+        </div>
       </div>
+      {/* hero end  */}
+
       <Footer className="mt-auto" />
     </div>
   );
