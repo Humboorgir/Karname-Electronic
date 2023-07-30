@@ -25,10 +25,30 @@ model Teacher {
   image String
   password String
 }
+
+model Report {
+  id Int @id @default(autoincrement())
+ student Student @relation(fields: [studentId], references: [id])
+ studentId Int
+//  marks 
+ riazi Int
+ oloom Int
+ farsi Int
+ ejtemai Int
+ dini Int
+ zaban Int
+ arabi Int
+ honar Int
+ varzesh Int
+ fanavari Int
+ enzebat Int
+}
+
 model Student {
   id Int @id @default(autoincrement())
   username String @unique 
   name String 
   image String
   password String
+  reports Report[]
 }
