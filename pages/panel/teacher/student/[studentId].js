@@ -27,7 +27,7 @@ const Student = ({ students }) => {
       </>
     );
   return (
-    <div className="flex flex-col min-h-[100svh] justify-between">
+    <div className="flex flex-col min-h-[100svh] justify-center">
       <Head page="درگاه مدیریت" />
       <Header />
       <div className="flex flex-col justify-center items-center h-max">
