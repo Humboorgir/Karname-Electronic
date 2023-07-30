@@ -1,4 +1,4 @@
-export const Description = () => {
+const Description = () => {
   return (
     <p className="max-w-sm">
       برای صدور کارنامه و ثبت نمرات .روی دکمه زیر کلیک کنید کارنامه های ثبت شده در پنل پایین قابل مشاهده
@@ -7,3 +7,5 @@ export const Description = () => {
     </p>
   );
 };
+
+export default Description;
