@@ -3,7 +3,7 @@ import Navbar from "@/components/panel/teacher/navbar";
 import Title from "@/components/panel/teacher/student/title";
 import Description from "@/components/panel/teacher/student/description";
 import KarnameButton from "@/components/panel/teacher/student/karnamebutton";
-import StudentPicture from "@/components/panel/teacher/student/studentpicture";
+import Image from "@/components/panel/teacher/student/image";
 import Footer from "@/components/footer";
 import { useSession } from "next-auth/react";
 
@@ -37,13 +37,11 @@ const Student = ({ student }) => {
       <Navbar />
 
       {/* hero */}
-      <div className="flex items-center justify-center h-max gap-4 relative">
-        <StudentPicture student={student} />
-        <div>
-          <Title student={student} />
-          <Description />
-          <KarnameButton />
-        </div>
+      <div className="flex flex-col items-center justify-center h-max mb-16 text-center">
+        <Image student={student} />
+        <Title student={student} />
+        <Description />
+        <KarnameButton student={student} />
       </div>
       {/* hero end  */}
 

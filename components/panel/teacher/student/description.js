@@ -1,11 +1,5 @@
 const Description = () => {
-  return (
-    <p className="max-w-sm">
-      برای صدور کارنامه و ثبت نمرات .روی دکمه زیر کلیک کنید کارنامه های ثبت شده در پنل پایین قابل مشاهده
-      هستند. <br />
-      در صورت نیاز به کمک با پشتیبانی تماس بگیرید
-    </p>
-  );
+  return <p className="max-w-sm text-sm text-slate-700 mt-2">برای ثبت کارنامه جدید روی دکمه زیر کلیک کنید</p>;
 };
 
 export default Description;
