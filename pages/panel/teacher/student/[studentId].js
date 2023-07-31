@@ -4,11 +4,16 @@ import Title from "@/components/panel/teacher/student/title";
 import Description from "@/components/panel/teacher/student/description";
 import KarnameButton from "@/components/panel/teacher/student/karnamebutton";
 import Image from "@/components/panel/teacher/student/image";
+import KarnameModal from "@/components/panel/teacher/student/karnamemodal";
 import Footer from "@/components/footer";
 import { useSession } from "next-auth/react";
 
 const Student = ({ student }) => {
   const { data: session, status } = useSession();
+
+  const handleClick = () => {
+    window.karnameModal.showModal();
+  };
 
   if (status === "loading")
     return (
@@ -38,14 +43,19 @@ const Student = ({ student }) => {
 
       {/* hero */}
       <div className="flex flex-col items-center justify-center h-max mb-16 text-center">
-        <Image student={student} />
-        <Title student={student} />
-        <Description />
-        <KarnameButton student={student} />
+        {!student.reports?.length && (
+          <>
+            <Image student={student} />
+            <Title student={student} />
+            <Description />
+            <KarnameButton handleClick={handleClick} student={student} />
+          </>
+        )}
       </div>
       {/* hero end  */}
-
       <Footer className="mt-auto" />
+
+      <KarnameModal handleSubmit={() => null} />
     </div>
   );
 };
