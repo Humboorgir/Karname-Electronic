@@ -55,7 +55,7 @@ const Student = ({ student }) => {
       {/* hero end  */}
       <Footer className="mt-auto" />
 
-      <KarnameModal handleSubmit={() => null} />
+      <KarnameModal handleSubmit={handleSubmit} />
     </div>
   );
 };
@@ -68,6 +68,28 @@ export async function getServerSideProps(context) {
   return {
     props: { student },
   };
+}
+
+async function handleSubmit(e) {
+  const data = {
+    name: e.target.name.value,
+    riazi: e.target.riazi.value,
+    oloom: e.target.oloom.value,
+    farsi: e.target.farsi.value,
+    ejtemai: e.target.ejtemai.value,
+    dini: e.target.dini.value,
+    zaban: e.target.zaban.value,
+    arabi: e.target.arabi.value,
+    varzesh: e.target.varzesh.value,
+    honar: e.target.honar.value,
+    enzebat: e.target.enzebat.value,
+  };
+
+  console.log("test");
+  await fetch(`${window.location.origin}/api/test`, {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
 }
 
 export default Student;

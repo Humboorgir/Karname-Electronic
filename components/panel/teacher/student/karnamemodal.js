@@ -6,7 +6,7 @@ const Modal = ({ handleSubmit }) => {
   return (
     <dialog id="karnameModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={(e) => handleSubmit(e, setStudents, modalRef)}
+        onSubmit={handleSubmit}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
         className="modal-box w-[min(370px,95vw)]">
@@ -15,7 +15,8 @@ const Modal = ({ handleSubmit }) => {
             className="py-1 px-2 w-[min(200px,40vw)] focus:outline-none border-b-2 border-b-neutral-400"
             name="name"
             placeholder="کارنامه دی ماه"
-            id="name"></input>
+            id="name"
+            required></input>
           <label className="text-xl font-bold" for="name">
             عنوان کارنامه
           </label>
