@@ -6,7 +6,7 @@ const Modal = ({ setReports }) => {
   return (
     <dialog id="karnameModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={(e) => handleSubmit(e, setReports)}
+        onSubmit={(e) => handleSubmit(e, setReports, modalRef)}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
         className="modal-box w-[min(370px,95vw)]">
@@ -60,7 +60,7 @@ const Modal = ({ setReports }) => {
   );
 };
 
-async function handleSubmit(e, setReports) {
+async function handleSubmit(e, setReports, modalRef) {
   e.preventDefault();
   const data = {
     name: e.target.name.value,
@@ -77,6 +77,7 @@ async function handleSubmit(e, setReports) {
     defai: Number(e.target.defai.value),
     enzebat: Number(e.target.enzebat.value),
   };
+  console.log(data);
 
   let response = await fetch(`${window.location.origin}/api/student/${global.student.id}`, {
     method: "POST",
@@ -89,9 +90,14 @@ async function handleSubmit(e, setReports) {
   if (!response.status == "200")
     return console.log("Something went wrong! server responded with code " + response.status);
 
+  response = await response.json();
+
   setReports((reports) => {
-    return [...reports, response.data];
+    console.log(response);
+    return [{ ...response.data }, ...reports];
   });
+
+  return modalRef.current.close();
 }
 
 export default Modal;

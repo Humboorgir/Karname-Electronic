@@ -28,9 +28,8 @@ export default async function handler(req, res) {
     if (!id) return res.status(400).json({ data: "Bad request" });
 
     let data = req.body;
-    data = await JSON.parse(data);
 
-    let createdReport = await prisma.student.update({
+    let { reports } = await prisma.student.update({
       where: {
         id,
       },
@@ -41,11 +40,14 @@ export default async function handler(req, res) {
           },
         },
       },
+      include: {
+        reports: true,
+      },
     });
 
     res.status(200).json({
       data: {
-        ...createdReport,
+        ...reports[reports.length - 1],
       },
     });
   }
