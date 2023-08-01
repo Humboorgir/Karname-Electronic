@@ -1,12 +1,12 @@
 import MarkInput from "@/components/panel/teacher/student/markinput";
 import { useRef } from "react";
 
-const Modal = () => {
+const Modal = ({ setReports }) => {
   const modalRef = useRef(null);
   return (
     <dialog id="karnameModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={(e) => handleSubmit(e, setReports)}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
         className="modal-box w-[min(370px,95vw)]">
@@ -17,7 +17,7 @@ const Modal = () => {
             placeholder="کارنامه دی ماه"
             id="name"
             required></input>
-          <label className="text-xl font-bold" for="name">
+          <label className="text-xl font-bold" htmlFor="name">
             عنوان کارنامه
           </label>
         </div>
@@ -60,7 +60,8 @@ const Modal = () => {
   );
 };
 
-async function handleSubmit(e) {
+async function handleSubmit(e, setReports) {
+  e.preventDefault();
   const data = {
     name: e.target.name.value,
     riazi: Number(e.target.riazi.value),
@@ -87,6 +88,10 @@ async function handleSubmit(e) {
 
   if (!response.status == "200")
     return console.log("Something went wrong! server responded with code " + response.status);
+
+  setReports((reports) => {
+    return [...reports, response.data];
+  });
 }
 
 export default Modal;
