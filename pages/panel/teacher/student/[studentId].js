@@ -4,13 +4,22 @@ import Title from "@/components/panel/teacher/student/title";
 import Description from "@/components/panel/teacher/student/description";
 import KarnameButton from "@/components/panel/teacher/student/karnamebutton";
 import Image from "@/components/panel/teacher/student/image";
+import ReportCards from "@/components/panel/teacher/student/reportcards";
 import KarnameModal from "@/components/panel/teacher/student/karnamemodal";
 import Footer from "@/components/footer";
+
 import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 const Student = ({ student }) => {
   global.student = student;
+
+  const [reports, setReports] = useState([]);
   const { data: session, status } = useSession();
+
+  useEffect(() => {
+    setReports(student.reports);
+  }, []);
 
   const handleClick = () => {
     window.karnameModal.showModal();
@@ -52,11 +61,13 @@ const Student = ({ student }) => {
             <KarnameButton handleClick={handleClick} student={student} />
           </>
         )}
+
+        <ReportCards reports={reports} />
       </div>
       {/* hero end  */}
       <Footer className="mt-auto" />
 
-      <KarnameModal />
+      <KarnameModal setReports={setReports} />
     </div>
   );
 };
