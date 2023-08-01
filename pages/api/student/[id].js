@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 
 export default async function handler(req, res) {
+  // handling get requests
   if (req.method === "GET") {
     let { id } = req.query;
     id = Number(id);
@@ -11,11 +12,15 @@ export default async function handler(req, res) {
       where: {
         id,
       },
+      include: {
+        reports: true,
+      },
     });
+
     if (!data) return res.status(404).send({ data: "Not found" });
     res.status(200).json(data);
   }
-
+  // handling post requests
   if (req.method === "POST") {
     let { id } = req.query;
     id = Number(id);
