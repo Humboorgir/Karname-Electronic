@@ -31,6 +31,8 @@ const Modal = ({ handleSubmit }) => {
           <MarkInput text="عربی" id="arabi" />
           <MarkInput text="ورزش" id="varzesh" />
           <MarkInput text="هنر" id="honar" />
+          <MarkInput text="فناوری" id="fanavari" />
+          <MarkInput text="دفاعی" id="defai" />
           <MarkInput text="انضباط" id="enzebat" />
         </div>
 
