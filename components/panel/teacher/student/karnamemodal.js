@@ -1,7 +1,7 @@
 import MarkInput from "@/components/panel/teacher/student/markinput";
 import { useRef } from "react";
 
-const Modal = ({ handleSubmit }) => {
+const Modal = () => {
   const modalRef = useRef(null);
   return (
     <dialog id="karnameModal" className="modal" ref={modalRef}>
@@ -59,5 +59,34 @@ const Modal = ({ handleSubmit }) => {
     </dialog>
   );
 };
+
+async function handleSubmit(e) {
+  const data = {
+    name: e.target.name.value,
+    riazi: Number(e.target.riazi.value),
+    oloom: Number(e.target.oloom.value),
+    farsi: Number(e.target.farsi.value),
+    ejtemai: Number(e.target.ejtemai.value),
+    dini: Number(e.target.dini.value),
+    zaban: Number(e.target.zaban.value),
+    arabi: Number(e.target.arabi.value),
+    varzesh: Number(e.target.varzesh.value),
+    honar: Number(e.target.honar.value),
+    fanavari: Number(e.target.fanavari.value),
+    defai: Number(e.target.defai.value),
+    enzebat: Number(e.target.enzebat.value),
+  };
+
+  let response = await fetch(`${window.location.origin}/api/student/${global.student.id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.status == "200")
+    return console.log("Something went wrong! server responded with code " + response.status);
+}
 
 export default Modal;
