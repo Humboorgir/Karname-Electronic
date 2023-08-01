@@ -53,14 +53,10 @@ const Student = ({ student }) => {
 
       {/* hero */}
       <div className="flex flex-col items-center justify-center h-max mb-16 text-center">
-        {!student.reports?.length && (
-          <>
-            <Image student={student} />
-            <Title student={student} />
-            <Description />
-            <KarnameButton handleClick={handleClick} student={student} />
-          </>
-        )}
+        <Image student={student} />
+        <Title student={student} />
+        <Description />
+        <KarnameButton handleClick={handleClick} student={student} />
 
         <ReportCards reports={reports} />
       </div>
