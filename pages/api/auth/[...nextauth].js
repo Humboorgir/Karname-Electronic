@@ -18,11 +18,11 @@ export const authOptions = {
         // get the provided username, password and position
         const { username, password, position } = credentials;
         let user;
-        let storedUsers;
         // defining the default admins
         // these are only valid if there are no admins stored on the database
         let defaultAdmins = [
           {
+            id: 0,
             name: "Manager",
             username: "admin",
             password: "admin",
@@ -79,6 +79,7 @@ export const authOptions = {
   callbacks: {
     session({ token, session }) {
       if (token) {
+        session.user.id = token.id;
         session.user.name = token.name;
         session.user.position = token.position;
         session.user.image = token.image;
@@ -89,6 +90,7 @@ export const authOptions = {
     jwt({ token, user }) {
       if (!user) return token;
       return {
+        id: user.id,
         name: user.name,
         position: user.position,
         image: user.image,
