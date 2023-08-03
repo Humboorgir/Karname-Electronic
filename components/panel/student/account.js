@@ -9,8 +9,8 @@ const Account = ({ handleSignOut }) => {
   return (
     <div
       tabIndex={0}
-      className="h-[90px] w-[230px] flex flex-row justify-center items-center gap-3 
-      cursor-pointer account relative hover:bg-[hsla(0,0%,77%,0)] dropdown"
+      className="h-[90px] min-w-[230px] max-w-[270px] px-3 flex flex-row justify-center items-center gap-3 
+      cursor-pointer account relative hover:bg-[rgba(197,197,197,0.25)] dropdown"
       id="account">
       <div className="flex flex-col items-end justify-center account gap-1.5">
         <span className="account leading-5">{session.user.name}</span>
