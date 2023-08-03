@@ -1,7 +1,6 @@
 import { signIn } from "next-auth/react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { button } from "daisyui";
 
 import Image from "next/image";
 
@@ -42,7 +41,7 @@ const Form = ({ setError }) => {
           دبیر: "teacher",
           "دانش آموز": "student",
         };
-        router.push(`/panel/${panels[position]}`);
+        window.location.replace(`/panel/${panels[position]}`);
       } else {
         router.push(`/?error=${error}`);
       }
