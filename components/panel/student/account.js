@@ -10,11 +10,11 @@ const Account = ({ handleSignOut }) => {
     <div
       tabIndex={0}
       className="h-[90px] w-[230px] flex flex-row justify-center items-center gap-3 
-      cursor-pointer account relative hover:bg-[rgba(197,197,197,0.25)] dropdown"
+      cursor-pointer account relative hover:bg-[hsla(0,0%,77%,0)] dropdown"
       id="account">
       <div className="flex flex-col items-end justify-center account gap-1.5">
         <span className="account leading-5">{session.user.name}</span>
-        <p className="text-slate-600 text-sm account">{session.user.position}</p>
+        <p className="text-sky-600 text-sm account">{session.user.position}</p>
       </div>
       <img className="h-[60px] account" src={`/defaultStudent${session.user.image}.svg`}></img>
       <FaAngleDown className="h-[20px]" />
