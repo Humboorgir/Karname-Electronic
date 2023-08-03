@@ -51,9 +51,9 @@ const ReportAnalysis = ({ reports }) => {
       <div className="flex flex-col items-center mb-10">
         <h2 className="text-6xl mt-4 mr-4 bold px-2 text-right">{message.title}</h2>
         <p className="mt-3 text-base text-slate-700 max-w-[380px] text-right">{message.description}</p>
-        <button className="btn btn-info bg-blue hover:bg-sky-500 text-white mt-2 px-20">
+        <a href="#reportcards" className="btn btn-info bg-blue hover:bg-sky-500 text-white mt-2 px-20">
           مشاهده کارنامه
-        </button>
+        </a>
       </div>
     </div>
   );

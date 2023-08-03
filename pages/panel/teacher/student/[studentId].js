@@ -52,15 +52,15 @@ const Student = ({ student }) => {
       <Navbar />
 
       {/* hero */}
-      <div className="flex flex-col items-center justify-center h-max mb-16 text-center">
+      <section className="flex flex-col items-center justify-center h-max mb-16 text-center">
         <Image student={student} />
         <Title student={student} />
         <Description />
         <KarnameButton handleClick={handleClick} student={student} />
-
-        <ReportCards reports={reports} />
-      </div>
+      </section>
       {/* hero end  */}
+
+      <ReportCards reports={reports} />
       <Footer className="mt-auto" />
 
       <KarnameModal setReports={setReports} />
