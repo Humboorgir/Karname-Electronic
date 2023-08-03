@@ -17,7 +17,9 @@ const ReportCard = ({ report }) => {
   const [moadel, majmoo] = getData(report);
 
   return (
-    <div className="border border-neutral-400 rounded-lg flex flex-col pt-[53px] shadow-xl w-[600px] relative">
+    <div
+      className="mx-auto border border-neutral-400 
+    rounded-lg flex flex-col pt-[53px] shadow-xl w-[600px] relative">
       <h1
         className="flex text-[24px] items-center justify-end bg-blue text-white top-0 left-0 
         rounded-t-lg absolute w-[calc(100%+4px)] ml-[-2px] h-[55px] mt-[-2px] px-[5%]">

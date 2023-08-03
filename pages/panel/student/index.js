@@ -48,8 +48,8 @@ const Student = ({ student }) => {
       <div className="flex flex-col items-center justify-center h-max mb-8 text-center">
         {!global.student.reports?.length && <NoReports />}
         {global.student.reports?.length && <ReportAnalysis reports={reports} />}
-        <ReportCards reports={reports} />
       </div>
+      <ReportCards reports={reports} />
       {/* hero end  */}
       <Footer className="mt-auto" />
     </div>
