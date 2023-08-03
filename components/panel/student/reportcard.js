@@ -11,7 +11,6 @@ const ReportCard = ({ report }) => {
     }
     moadel = moadel / 12;
     moadel = Math.round((moadel + Number.EPSILON) * 100) / 100;
-    global.moadel = moadel;
     return [moadel, majmoo];
   }
 

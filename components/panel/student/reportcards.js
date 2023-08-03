@@ -1,4 +1,4 @@
-import ReportCard from "@/components/panel/teacher/student/reportcard";
+import ReportCard from "@/components/panel/student/reportcard";
 
 const ReportCards = ({ reports }) => {
   return (
