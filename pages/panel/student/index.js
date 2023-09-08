@@ -46,8 +46,8 @@ const Student = ({ student }) => {
 
       {/* hero */}
       <div className="flex flex-col items-center justify-center h-max mb-8 text-center">
-        {!global.student.reports?.length && <NoReports />}
-        {global.student.reports?.length && <ReportAnalysis reports={reports} />}
+        {Boolean(!global.student.reports?.length) && <NoReports />}
+        {Boolean(global.student.reports?.length) && <ReportAnalysis reports={reports} />}
       </div>
       <ReportCards reports={reports} />
       {/* hero end  */}
