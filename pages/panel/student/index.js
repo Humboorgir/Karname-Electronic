@@ -49,7 +49,7 @@ const Student = ({ student }) => {
         {Boolean(!global.student.reports?.length) && <NoReports />}
         {Boolean(global.student.reports?.length) && <ReportAnalysis reports={reports} />}
       </div>
-      <ReportCards reports={reports} />
+      {Boolean(global.student.reports?.length) && <ReportCards reports={reports} />}
       {/* hero end  */}
       <Footer className="mt-auto" />
     </div>
