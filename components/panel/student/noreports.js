@@ -2,7 +2,7 @@ import NoDataImage from "@/components/panel/student/nodataimage";
 
 const NoReports = () => {
   return (
-    <div className="mt-16 flex flex-col items-center justify-center text-center">
+    <div className="flex flex-col items-center justify-center text-center">
       <NoDataImage />
       <h2 className="text-2xl bold mt-4 px-2">کارنامه ای برای شما ثبت نشده است</h2>
       <p className="text-sm text-slate-700 max-w-md mt-1.5 px-2">

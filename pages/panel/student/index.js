@@ -40,7 +40,7 @@ const Student = ({ student }) => {
       </>
     );
   return (
-    <div className="flex flex-col min-h-[100svh]">
+    <div className="flex flex-col min-h-[100svh] justify-between">
       <Head page="درگاه مدیریت" />
       <Navbar />
 
@@ -51,7 +51,7 @@ const Student = ({ student }) => {
       </div>
       {Boolean(global.student.reports?.length) && <ReportCards reports={reports} />}
       {/* hero end  */}
-      <Footer className="mt-auto" />
+      <Footer />
     </div>
   );
 };
