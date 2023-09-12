@@ -5,6 +5,8 @@ import ReportAnalysis from "@/components/panel/student/reportanalysis";
 import ReportCards from "@/components/panel/student/reportcards";
 import Footer from "@/components/footer";
 
+import ChangePassModal from "@/components/panel/global/changepassmodal";
+
 import { useSession, getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
@@ -52,6 +54,8 @@ const Student = ({ student }) => {
       {Boolean(global.student.reports?.length) && <ReportCards reports={reports} />}
       {/* hero end  */}
       <Footer />
+
+      <ChangePassModal />
     </div>
   );
 };
