@@ -13,29 +13,42 @@ const ChangePassModal = () => {
         onSubmit={handleSubmit}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
-        className="modal-box w-[min(370px,95vw)]">
-        <div className="flex justify-end items-center gap-3 mb-8">
-          <input
-            className="py-1 px-2 w-[min(200px,40vw)] focus:outline-none border-b-2 border-b-neutral-400"
-            name="name"
-            placeholder="کارنامه دی ماه"
-            id="name"
-            required></input>
-          <label className="text-xl font-bold" htmlFor="name">
-            عنوان کارنامه
+        className="modal-box w-[min(320px,95vw)]">
+        <div className="flex flex-col inputAnimationField mb-6">
+          <label htmlFor="password" className="text-lg z-10 mb-[5px]">
+            رمز عبور قبلی
           </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="رمز عبور قبلی"
+            className="border-b border-gray-500 px-2 py-2 focus:outline-none z-10"
+          />
+          <i className="relative" />
+        </div>
+        <div className="flex flex-col inputAnimationField">
+          <label htmlFor="password" className="text-lg z-10 mb-[5px]">
+            رمز عبور جدید
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="رمز عبور جدید"
+            className="border-b border-gray-500 px-2 py-2 focus:outline-none z-10"
+          />
+          <i className="relative" />
         </div>
 
         <div className="modal-action justify-center md:justify-end">
           <button type="submit" className="btn bg-blue text-white hover:bg-sky-400">
-            ثبت کارنامه
+            تغییر رمز عبور
           </button>
 
           <button
-            onClick={(e) => {
-              e.preventDefault();
-              modalRef.current.close();
-            }}
+            type="button"
+            onClick={() => modalRef.current.close()}
             className="btn btn-outline btn-error hover:!text-white text-white">
             انصراف
           </button>
@@ -44,7 +57,7 @@ const ChangePassModal = () => {
 
       {/* backdrop */}
       <form method="dialog" className="modal-backdrop">
-        <button></button>
+        <button className="cursor-default"></button>
       </form>
     </dialog>
   );
