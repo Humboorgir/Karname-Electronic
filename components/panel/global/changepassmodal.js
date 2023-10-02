@@ -3,9 +3,21 @@ import { useRef } from "react";
 const ChangePassModal = () => {
   const modalRef = useRef(null);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log("test");
+    const data = {
+      previousPass: e.target.previousPass.value,
+      newPass: e.target.newPass.value,
+    };
+
+    let res = await fetch(`/api/student/${global.student.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    console.log(res);
   }
   return (
     <dialog id="changePassModal" className="modal" ref={modalRef}>
@@ -15,26 +27,26 @@ const ChangePassModal = () => {
         method="dialog"
         className="modal-box w-[min(320px,95vw)]">
         <div className="flex flex-col inputAnimationField mb-6">
-          <label htmlFor="password" className="text-lg z-10 mb-[5px]">
+          <label htmlFor="previousPass" className="text-lg z-10 mb-[5px]">
             رمز عبور قبلی
           </label>
           <input
             type="password"
-            name="password"
-            id="password"
+            name="previousPass"
+            id="previousPass"
             placeholder="رمز عبور قبلی"
             className="border-b border-gray-500 px-2 py-2 focus:outline-none z-10"
           />
           <i className="relative" />
         </div>
         <div className="flex flex-col inputAnimationField">
-          <label htmlFor="password" className="text-lg z-10 mb-[5px]">
+          <label htmlFor="newPass" className="text-lg z-10 mb-[5px]">
             رمز عبور جدید
           </label>
           <input
             type="password"
-            name="password"
-            id="password"
+            name="newPass"
+            id="newPass"
             placeholder="رمز عبور جدید"
             className="border-b border-gray-500 px-2 py-2 focus:outline-none z-10"
           />
