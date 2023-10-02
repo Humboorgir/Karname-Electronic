@@ -52,33 +52,32 @@ export default async function handler(req, res) {
     });
   }
 
-    // handling put requests
-    if (req.method === "PUT") {
-      let { id } = req.query;
-      id = Number(id);
-  
-      if (!id) return res.status(400).json({ data: "Bad request" });
-  
-      let {newPass, previousPass} = req.body;
-  
-      let student = await prisma.student.findFirst({
-        where: {
-          id
-        }
-      });
+  // handling put requests
+  if (req.method === "PUT") {
+    let { id } = req.query;
+    id = Number(id);
+    let { newPass, previousPass } = req.body;
 
-      if(student.password !== previousPass) return res.status(403).json({data: "Forbidden"});
-      await prisma.student.update({
-        where: {
-          id,
-        },
-        data: {
-          password: newPass
-        }
-      });
-  
-      res.status(200).json({
-        data: "OK"
-      });
-    }
+    if (!id || !newPass || !previousPass) return res.status(400).json({ data: "Bad request" });
+
+    let student = await prisma.student.findFirst({
+      where: {
+        id,
+      },
+    });
+
+    if (student.password !== previousPass) return res.status(403).json({ data: "Forbidden" });
+    await prisma.student.update({
+      where: {
+        id,
+      },
+      data: {
+        password: newPass,
+      },
+    });
+
+    res.status(200).json({
+      data: "OK",
+    });
+  }
 }
