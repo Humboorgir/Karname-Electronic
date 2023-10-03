@@ -7,12 +7,16 @@ import DeleteModal from "@/components/panel/admin/teachers/deletemodal";
 
 import { useState, useEffect } from "react";
 
-const TeachersPage = ({ teachers_ }) => {
+const TeachersPage = () => {
   const [teachers, setTeachers] = useState([]);
 
   const [teacherId, setTeacherId] = useState(null);
   useEffect(() => {
-    setTeachers(teachers_);
+    fetch("/api/teachers", {
+      method: "GET",
+    })
+      .then((data) => data.json())
+      .then((data) => setTeachers(data));
   }, []);
 
   function openModal(modal, id) {
@@ -57,13 +61,5 @@ const TeachersPage = ({ teachers_ }) => {
     </Layout>
   );
 };
-export async function getServerSideProps() {
-  let teachers = await fetch(`${process.env.NEXTAUTH_URL}/api/teachers`, {
-    method: "GET",
-  });
-  let Teachers = await teachers.json();
-  return {
-    props: { teachers_: Teachers },
-  };
-}
+
 export default TeachersPage;
