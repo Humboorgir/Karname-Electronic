@@ -29,7 +29,7 @@ export default async function handler(req, res) {
   }
   // handling post requests
   if (req.method === "POST") {
-    if (token.position != "teacher" || token.position != "admin")
+    if (token.position != "teacher" && token.position != "admin")
       return res.status(403).json({ data: "Forbidden" });
 
     let { id } = req.query;
