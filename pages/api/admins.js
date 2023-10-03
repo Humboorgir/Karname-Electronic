@@ -1,13 +1,10 @@
-import prisma from "@/lib/prisma";
 import { getToken } from "next-auth/jwt";
+import prisma from "@/lib/prisma";
 
 export default async function handler(req, res) {
   const token = await getToken({ req });
-
-  if (!token) return res.status(401);
-
-  return console.log(token);
-
+  if (!token) return res.status(401).json({ data: "Unauthorized" });
+  if (token.position != "admin") return res.status(403).json({ data: "Forbidden" });
   // handling get requests
   if (req.method === "GET") {
     let data = await prisma.admin.findMany({
