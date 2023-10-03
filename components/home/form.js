@@ -1,11 +1,15 @@
 import { signIn } from "next-auth/react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 
 import Image from "next/image";
 
 const Form = ({ setError }) => {
   const router = useRouter();
+  const usernameInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
+  const positionInputRef = useRef(null);
+
   useEffect(() => {
     if (router.query.error) {
       document.querySelector("body").classList.add("shake");
@@ -26,9 +30,15 @@ const Form = ({ setError }) => {
   }, [router]);
   async function handleSubmit(e) {
     e.preventDefault();
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    let position = document.getElementById("position").value;
+    let username = usernameInputRef.current.value;
+    let password = passwordInputRef.current.value;
+    let position = positionInputRef.current.value;
+    const positions = {
+      نماینده: "admin",
+      دبیر: "teacher",
+      "دانش آموز": "student",
+    };
+    position = positions[position];
     signIn("credentials", {
       username,
       password,
@@ -36,12 +46,7 @@ const Form = ({ setError }) => {
       redirect: false,
     }).then(({ ok, error }) => {
       if (ok) {
-        const panels = {
-          نماینده: "admin",
-          دبیر: "teacher",
-          "دانش آموز": "student",
-        };
-        window.location.replace(`/panel/${panels[position]}`);
+        window.location.replace(`/panel/${position}`);
       } else {
         router.push(`/?error=${error}`);
       }
@@ -68,6 +73,7 @@ const Form = ({ setError }) => {
           type="text"
           name="username"
           id="username"
+          ref={usernameInputRef}
           placeholder="نام کاربری"
           className="border-b-[1px] border-gray-500 px-2 py-2 focus:outline-none z-10"
         />
@@ -83,6 +89,7 @@ const Form = ({ setError }) => {
           name="password"
           id="password"
           placeholder="رمز عبور"
+          ref={passwordInputRef}
           className="border-b border-gray-500 px-2 py-2 focus:outline-none z-10"
         />
         <i className="relative" />
@@ -94,6 +101,7 @@ const Form = ({ setError }) => {
         </label>
         <select
           id="position"
+          ref={positionInputRef}
           className="z-10 select border-0 border-b border-b-gray-500 w-full max-w-xs 
           rounded-none focus:outline-none px-2">
           <option>دانش آموز</option>
