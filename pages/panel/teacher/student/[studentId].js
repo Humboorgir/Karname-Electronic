@@ -60,7 +60,7 @@ const Student = ({ student }) => {
       </section>
       {/* hero end  */}
 
-      <ReportCards reports={reports} />
+      {Boolean(reports.length) && <ReportCards reports={reports} />}
       <Footer className="mt-auto" />
 
       <KarnameModal setReports={setReports} />
