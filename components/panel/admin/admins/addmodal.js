@@ -1,12 +1,12 @@
 import { useRef } from "react";
 
-const AddModal = ({ setManagers }) => {
+const AddModal = ({ setAdmins }) => {
   const modalRef = useRef(null);
 
   return (
     <dialog id="addModal" className="modal" ref={modalRef}>
       <form
-        onSubmit={(e) => handleSubmit(e, setManagers, modalRef)}
+        onSubmit={(e) => handleSubmit(e, setAdmins, modalRef)}
         onClick={(e) => e.stopPropagation()}
         method="dialog"
         className="modal-box flex flex-col w-[min(350px,98vw)]">
@@ -50,7 +50,7 @@ const AddModal = ({ setManagers }) => {
   );
 };
 
-async function handleSubmit(e, setManagers, modalRef) {
+async function handleSubmit(e, setAdmins, modalRef) {
   e.preventDefault();
   const image = Math.floor(Math.random() * 5) + 1;
   const data = {
@@ -58,7 +58,7 @@ async function handleSubmit(e, setManagers, modalRef) {
     name: e.target.name.value,
     image,
   };
-  const response = await fetch("/api/managers", {
+  const response = await fetch("/api/admins", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -78,7 +78,7 @@ async function handleSubmit(e, setManagers, modalRef) {
 
   modalRef.current.close();
 
-  setManagers((managers) => [...managers, res]);
+  setAdmins((admins) => [...admins, res]);
 }
 
 export default AddModal;

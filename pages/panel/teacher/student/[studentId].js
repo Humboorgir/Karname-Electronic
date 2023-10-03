@@ -7,15 +7,29 @@ import ReportCards from "@/components/panel/teacher/student/reportcards";
 import KarnameModal from "@/components/panel/teacher/student/karnamemodal";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
-const Student = ({ student }) => {
+const Student = () => {
+  const router = useRouter();
+
+  const [student, setStudent] = useState({});
   global.student = student;
 
   const [reports, setReports] = useState([]);
 
   useEffect(() => {
-    setReports(student.reports);
-  }, []);
+    const { studentId } = router.query;
+    if (!studentId) return;
+
+    fetch(`/api/student/${studentId}`, {
+      method: "GET",
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        setStudent(data);
+        setReports(data.reports);
+      });
+  }, [router.query]);
 
   const handleClick = () => {
     window.karnameModal.showModal();
@@ -35,15 +49,5 @@ const Student = ({ student }) => {
     </Layout>
   );
 };
-
-export async function getServerSideProps(context) {
-  let student = await fetch(`${process.env.NEXTAUTH_URL}/api/student/${context.query.studentId}`, {
-    method: "GET",
-  });
-  student = await student.json();
-  return {
-    props: { student },
-  };
-}
 
 export default Student;

@@ -1,7 +1,20 @@
 import Layout from "@/layouts/panel-layout";
 import Students from "@/components/panel/teacher/students";
 
-const Student = ({ students }) => {
+import { useEffect, useState } from "react";
+
+const Student = () => {
+  const [students, setStudents] = useState([]);
+  useEffect(() => {
+    fetch("/api/students", {
+      method: "GET",
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        console.log(students);
+        setStudents(data);
+      });
+  }, []);
   return (
     <Layout>
       <div className="flex flex-col justify-center items-center h-max">
@@ -23,15 +36,5 @@ const Student = ({ students }) => {
     </Layout>
   );
 };
-
-export async function getServerSideProps() {
-  let students = await fetch(`${process.env.NEXTAUTH_URL}/api/students`, {
-    method: "GET",
-  });
-  let Students = await students.json();
-  return {
-    props: { students: Students },
-  };
-}
 
 export default Student;

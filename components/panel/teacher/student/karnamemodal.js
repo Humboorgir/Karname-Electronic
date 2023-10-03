@@ -77,7 +77,6 @@ async function handleSubmit(e, setReports, modalRef) {
     defai: Number(e.target.defai.value),
     enzebat: Number(e.target.enzebat.value),
   };
-  console.log(data);
 
   let response = await fetch(`${window.location.origin}/api/student/${global.student.id}`, {
     method: "POST",
