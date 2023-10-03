@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 
-import DropdownMenu from "./dropdown";
+import DropdownMenu from "@/components/panel/global/navbar/dropdown";
 import { FaAngleDown } from "react-icons/fa";
 
 const Account = ({ handleSignOut }) => {

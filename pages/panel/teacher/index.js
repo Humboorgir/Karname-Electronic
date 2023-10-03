@@ -1,8 +1,8 @@
 import Head from "@/components/head";
-import Header from "@/components/panel/teacher/navbar";
+import Layout from "@/layouts/panel-layout";
 import Students from "@/components/panel/teacher/students";
-import Footer from "@/components/footer";
-import { useSession, getSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
+
 const Student = ({ students }) => {
   const { data: session, status } = useSession();
   if (status === "loading")
@@ -27,9 +27,7 @@ const Student = ({ students }) => {
       </>
     );
   return (
-    <div className="flex flex-col min-h-[100svh] justify-between gap-16">
-      <Head page="درگاه مدیریت" />
-      <Header />
+    <Layout>
       <div className="flex flex-col justify-center items-center h-max">
         <h1 className="text-3xl mb-2 bold">خوش آمدید</h1>
         <p className="text-sm text-slate-700 mb-10">برای ثبت کارنامه دانش آموز روی نام شان کلیک کنید</p>
@@ -46,8 +44,7 @@ const Student = ({ students }) => {
           <Students students={students} />
         </ul>
       </div>
-      <Footer className="mt-auto" />
-    </div>
+    </Layout>
   );
 };
 

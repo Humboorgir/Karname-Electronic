@@ -1,12 +1,11 @@
+import Layout from "@/layouts/panel-layout";
 import Head from "@/components/head";
-import Navbar from "@/components/panel/teacher/navbar";
 import Title from "@/components/panel/teacher/student/title";
 import Description from "@/components/panel/teacher/student/description";
 import KarnameButton from "@/components/panel/teacher/student/karnamebutton";
 import Image from "@/components/panel/teacher/student/image";
 import ReportCards from "@/components/panel/teacher/student/reportcards";
 import KarnameModal from "@/components/panel/teacher/student/karnamemodal";
-import Footer from "@/components/footer";
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -47,24 +46,18 @@ const Student = ({ student }) => {
       </>
     );
   return (
-    <div className="flex flex-col min-h-[100svh] gap-16">
-      <Head page="درگاه مدیریت" />
-      <Navbar />
-
-      {/* hero */}
-      <section className="flex flex-col items-center justify-center h-max mb-16 text-center">
+    <Layout>
+      <section className="flex flex-col items-center justify-center text-center mb-14 py-12">
         <Image student={student} />
         <Title student={student} />
         <Description />
         <KarnameButton handleClick={handleClick} student={student} />
-      </section>
-      {/* hero end  */}
 
-      {Boolean(reports.length) && <ReportCards reports={reports} />}
-      <Footer className="mt-auto" />
+        {Boolean(reports.length) && <ReportCards reports={reports} />}
+      </section>
 
       <KarnameModal setReports={setReports} />
-    </div>
+    </Layout>
   );
 };
 

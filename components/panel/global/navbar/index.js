@@ -1,8 +1,18 @@
-import Li from "./li";
-import Account from "./account";
+import Li from "@/components/panel/global/navbar/li";
+import Account from "@/components/panel/global/navbar/account";
+
 import { FaHome, FaInfoCircle, FaPhone } from "react-icons/fa";
+
 import { signOut } from "next-auth/react";
-const Header = () => {
+import { useRouter } from "next/router";
+
+const Navbar = () => {
+  const router = useRouter();
+  const { pathname } = router;
+  const pathSegments = pathname.split("/");
+  const panelIndex = pathSegments.indexOf("panel");
+  const panelType = pathSegments[panelIndex + 1];
+  const homeUrl = `/panel/${panelType}`;
   function handleSignOut() {
     signOut({ callbackUrl: `${window.location.origin}/` });
   }
@@ -20,7 +30,7 @@ const Header = () => {
             کارنامه
           </div>
           <div className="hidden lg:flex flex-row justify-center items-center absolute left-[50%] translate-x-[-50%]">
-            <Li href="/panel/student">
+            <Li href={homeUrl}>
               <FaHome className="mb-[3px]" />
               خانه
             </Li>
@@ -49,4 +59,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

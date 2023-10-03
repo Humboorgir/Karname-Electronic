@@ -1,8 +1,7 @@
 import Head from "@/components/head";
-import Header from "@/components/panel/admin/navbar";
+import Layout from "@/layouts/panel-layout";
 import Panel from "@/components/panel/admin/panel";
-import Footer from "@/components/footer";
-import { useSession, getSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 const admin = () => {
   const { data: session, status } = useSession();
   if (status === "loading")
@@ -27,12 +26,9 @@ const admin = () => {
       </>
     );
   return (
-    <div className="flex flex-col min-h-[100svh] justify-between">
-      <Head page="درگاه مدیریت" />
-      <Header />
+    <Layout>
       <Panel />
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 
