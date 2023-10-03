@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Manager {
+model Admin {
     id Int @id @default(autoincrement())
   username String @unique 
   name String 
