@@ -6,6 +6,7 @@ const MarkInput = ({ text, id }) => {
         name={id}
         placeholder="۲۰"
         id={id}
+        autoComplete="off"
         required></input>
       <label className="text-lg font-bold" htmlFor={id}>
         {text}
