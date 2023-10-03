@@ -94,7 +94,7 @@ const Form = ({ setError }) => {
         </label>
         <select
           id="position"
-          class="z-10 select border-0 border-b border-b-gray-500 w-full max-w-xs 
+          className="z-10 select border-0 border-b border-b-gray-500 w-full max-w-xs 
           rounded-none focus:outline-none px-2">
           <option>دانش آموز</option>
           <option>دبیر</option>
