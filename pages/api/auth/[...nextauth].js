@@ -5,8 +5,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const authOptions = {
   debug: true,
   pages: {
-    signIn: "/login/admin",
-    error: "/login/admin",
+    signIn: "/",
+    error: "/",
   },
   providers: [
     CredentialsProvider({
@@ -23,23 +23,23 @@ export const authOptions = {
         let defaultAdmins = [
           {
             id: 0,
-            name: "Manager",
+            name: "Admin",
             username: "admin",
             password: "admin",
             image: "1",
-            position: "manager",
+            position: "admin",
           },
         ];
 
         // then, check to see if any users with that position are stored in the database.
-        if (position == "نماینده") {
-          //  check to see if any managers are stored in the database.
-          let storedManagers = await prisma.manager.findMany();
+        if (position == "admin") {
+          //  check to see if any admins are stored in the database.
+          let storedManagers = await prisma.admin.findMany();
           // if yes, look for someone with the provided information in the database,
           // if not, use the default 'admin' username and password.
           user = storedManagers.length
             ? // if yes, the user object equals to:
-              await prisma.manager.findFirst({
+              await prisma.admin.findFirst({
                 where: {
                   username: username,
                   password: password,
@@ -48,7 +48,7 @@ export const authOptions = {
             : // if not, the user object equals to:
               defaultAdmins.find((admin) => admin.username === username && admin.password === password);
         }
-        if (position == "دانش آموز") {
+        if (position == "student") {
           user = await prisma.student.findFirst({
             where: {
               username: username,
@@ -56,7 +56,7 @@ export const authOptions = {
             },
           });
         }
-        if (position == "دبیر") {
+        if (position == "teacher") {
           user = await prisma.teacher.findFirst({
             where: {
               username: username,

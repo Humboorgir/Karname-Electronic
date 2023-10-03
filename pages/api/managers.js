@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma";
 export default async function handler(req, res) {
   // handling get requests
   if (req.method === "GET") {
-    let data = await prisma.manager.findMany({
+    let data = await prisma.admin.findMany({
       select: {
         id: true,
         name: true,
@@ -18,8 +18,8 @@ export default async function handler(req, res) {
     if (!req.body) return;
     const { username, name } = req.body;
     let image = String(req.body.image);
-
-    const data = await prisma.manager.create({
+    if (!image) return res.status(400).json({ data: "Bad Request" });
+    const data = await prisma.admin.create({
       data: {
         name,
         username,
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     if (!req.body) return;
     const { id } = req.body;
 
-    await prisma.manager.delete({
+    await prisma.admin.delete({
       where: {
         id,
       },
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
   if (req.method === "PUT") {
     if (!req.body) return;
     const { username, name, id } = req.body;
-    await prisma.manager.update({
+    await prisma.admin.update({
       where: {
         id,
       },
