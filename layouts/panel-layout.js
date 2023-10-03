@@ -22,13 +22,7 @@ const panelLayout = ({ children }) => {
   const panelType = pathSegments[panelIndex + 1];
   const title = titles[panelType];
 
-  const positions = {
-    admin: "نماینده",
-    teacher: "دبیر",
-    student: "دانش آموز",
-  };
-  const position = positions[panelType];
-
+  const position = panelType;
   if (status === "loading")
     return (
       <div

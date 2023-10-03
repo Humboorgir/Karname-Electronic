@@ -5,6 +5,13 @@ import { FaAngleDown } from "react-icons/fa";
 
 const Account = ({ handleSignOut }) => {
   const { data: session, status } = useSession();
+
+  const positions = {
+    admin: "نماینده",
+    teacher: "دبیر",
+    student: "دانش آموز",
+  };
+  const position = positions[session.user.position];
   if (status !== "authenticated") return <div>NOT LOGGED IN</div>;
   return (
     <div
@@ -14,7 +21,7 @@ const Account = ({ handleSignOut }) => {
       id="account">
       <div className="flex flex-col items-end justify-center account gap-1.5">
         <span className="account leading-5">{session.user.name}</span>
-        <p className="text-sky-600 text-sm account">{session.user.position}</p>
+        <p className="text-sky-600 text-sm account">{position}</p>
       </div>
       <img className="h-[60px] account" src={`/defaultStudent${session.user.image}.svg`}></img>
       <FaAngleDown className="h-[20px]" />

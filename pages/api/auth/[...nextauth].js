@@ -13,7 +13,6 @@ export const authOptions = {
       name: "Credentials",
       id: "credentials",
       type: "credentials",
-
       async authorize(credentials, req) {
         // get the provided username, password and position
         const { username, password, position } = credentials;

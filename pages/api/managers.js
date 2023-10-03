@@ -1,6 +1,13 @@
 import prisma from "@/lib/prisma";
+import { getToken } from "next-auth/jwt";
 
 export default async function handler(req, res) {
+  const token = await getToken({ req });
+
+  if (!token) return res.status(401);
+
+  return console.log(token);
+
   // handling get requests
   if (req.method === "GET") {
     let data = await prisma.admin.findMany({
@@ -18,7 +25,7 @@ export default async function handler(req, res) {
     if (!req.body) return;
     const { username, name } = req.body;
     let image = String(req.body.image);
-    if (!image) return res.status(400).json({ data: "Bad Request" });
+    if (!image) return res.status(400);
     const data = await prisma.admin.create({
       data: {
         name,
