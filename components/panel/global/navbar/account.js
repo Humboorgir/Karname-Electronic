@@ -12,6 +12,11 @@ const Account = ({ handleSignOut }) => {
     student: "دانش آموز",
   };
   const position = positions[session.user.position];
+
+  const profilePictureUrl =
+    session.user.position == "student"
+      ? `/defaultStudent${session.user.image}.svg`
+      : `/defaultTeacher${session.user.image}.svg`;
   if (status !== "authenticated") return <div>NOT LOGGED IN</div>;
   return (
     <div
@@ -23,7 +28,7 @@ const Account = ({ handleSignOut }) => {
         <span className="account leading-5">{session.user.name}</span>
         <p className="text-sky-600 text-sm account">{position}</p>
       </div>
-      <img className="h-[60px] account" src={`/defaultStudent${session.user.image}.svg`}></img>
+      <img className="h-[60px] account" src={profilePictureUrl}></img>
       <FaAngleDown className="h-[20px]" />
       <DropdownMenu handleSignOut={handleSignOut} />
     </div>
